@@ -33,8 +33,7 @@ export async function menus(path = null) {
 
     if (/\[\w+\]/.test(url)) url = url.replace(/\[\w+\]/, ""); // "1" Case of [page].astro
 
-    const base = conf.site.split('/').length;
-    let flag = url.split('/').length - 1 - base;
+    let flag = url.split('/').length  - conf.site.split('/').length;
 
     lnk = {...lnk, menu: menu, uri: uri, url: url, flag: flag}
 
