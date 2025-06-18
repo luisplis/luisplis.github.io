@@ -1,0 +1,101 @@
+---
+import { Image as AstroImage } from 'astro:assets';
+import { slugify } from '@components/Tag.astro';
+
+export type AssetImage = { 
+    src: string, 
+    width?: number, 
+    height?: number, 
+    format?: string 
+}
+
+let attrs: any = Astro.props;
+
+export function source(path: string = ''): string{
+    const base = '/src/assets';
+
+    if (!path.startsWith('http') && !path.startsWith('//'))
+    {
+        path = path.replace(base, '');
+        path = (path.startsWith('@'))? path.replace('@', '/src/'): base+path;
+        path = decodeURI(path);
+    }
+
+    return (path == base)? '': path;
+};
+
+export function object(path: string = '', format: string = ''): AssetImage|string /* | string */ {
+
+    if (path.startsWith('http') || path.startsWith('//')) {
+        return path;
+    }
+
+    type ImageFiles = Record<string, { default: string }>;
+    let fso: ImageFiles = import.meta.glob('/src/assets/**/*.{webp,avif,jpeg,jpg,png,gif,svg}', { eager: true });
+    let snap: any;
+
+    let imgs = Object.entries(fso).filter(([key]) => key.includes(path));
+
+    snap = imgs[Math.floor(Math.random() * imgs.length)]?.[1]?.default;
+
+    if (!snap)
+        snap = Object.entries(imgs).find(([key]) => key.includes(path));
+
+    if (typeof snap === "string") return { src: snap } as AssetImage;
+
+    return snap as AssetImage;
+}
+
+export function image(img: string, ext: string = ''): string {
+    const media = object(source(img), ext) as AssetImage;
+    if (!media) throw new Error('Function image() PATH fails on load "'+img+'"');
+    return media.src;
+}
+
+let snap = null;
+let path = null;
+
+if (attrs.src === undefined) {
+    attrs.src = '';
+}
+if (typeof attrs.src === 'string' || attrs.src instanceof String)
+{
+    path = source(attrs.src);
+    snap = object(path, attrs.format);
+
+    if (!('class' in attrs)) attrs.class = 'img-fluid';
+}
+else // is object of AstroImage
+{
+    snap = attrs.src;
+    path = attrs.src;
+}
+
+let view = '';
+
+if ('src' in attrs)          delete(attrs.src);
+if ('view' in attrs)
+{
+    if (attrs.view === true || attrs.view === 'true')
+        view = 'img-'+slugify(path);
+    else if (attrs.view !== false && attrs.view !== 'false')
+        view = attrs.view;
+}
+
+if (!('alt' in attrs))       attrs.alt = slugify(path);
+if (!('loading' in attrs))   attrs.loading = "lazy";
+if (!('decoding' in attrs))  attrs.decoding = "async";
+
+attrs.inferSize = true; // defaults
+
+if (attrs.src === undefined && snap === undefined) {
+    return 'Image Load FAIL: "'+path+'"';
+    throw new Error('Image Component PATH fails on load "'+path+'"');
+}
+---
+{ (view)?
+    <AstroImage {...attrs} src={snap} transition:name={view}/>
+    <code>{view}</code>
+:
+    <AstroImage {...attrs} src={snap}/>
+}

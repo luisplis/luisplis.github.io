@@ -1,0 +1,50 @@
+---
+layout: ../../layouts/Blog.astro
+author: Astro Learner
+name: Bootstrap Avanzado
+term: Análisis y uso de Bootstrap para sacarle el máximo partido y rendimiento
+desc: Bootstrap es mejor opción que Tailwind para desarrollos en grupos de trabajo si sabes sacarlo el máximo partido.
+snap: /media/bootstrap-hero.png
+date: 01/01/2025
+tags: ["diseño-web", "bootstrap"]
+---
+
+## Bootstrap VS Tailwind
+
+La elección entre Bootstrap y Tailwind CSS no es que uno sea "mejor" que el otro en un sentido absoluto, 
+sino que cada uno es mejor para diferentes tipos de proyectos y filosofías de desarrollo, 
+generalmente son frameworks CSS muy potentes pero con enfoques totalmente distintos.
+
+### Taildwind y sus generadores
+
+Al generar solo el CSS que realmente utilizas (gracias a PostCSS y PurgeCSS), el bundle final de Tailwind suele ser mucho más pequeño que el de Bootstrap (incluso personalizado).
+
+Taildwind dispone de control granular, tienes control total sobre cada aspecto del diseño aplicando directamente las utilidades en tu HTML.
+
+- ¿código grano? -- insalvable
+
+### Bootstrap y sus componentes
+
+Los desarrolladores nuevos en CSS o en frameworks encontrarán más fácil entender cómo usar un "botón" o un "navbar" con una clase btn o navbar que construirlo desde cero con docenas de clases utilitarias.
+
+Además, Botstrap es "Opinionated" (Opinado): Bootstrap impone un estilo y un diseño base. Esto significa que si no necesitas un diseño ultra-personalizado, puedes tener un sitio web con buen aspecto y responsivo en minutos.
+
+- ¿sobrecarga? -- carga personalizada
+
+<img class="img-fluid mb-3" src="https://picsum.photos/700/400/?random=1" alt="random image 1"/>
+
+En resumen, la elección entre Bootstrap y Tailwind CSS depende de la filosofía de tu proyecto, la velocidad de desarrollo requerida, el nivel de personalización deseado y la familiaridad de tu equipo con cada framework. Bootstrap es excelente para la rapidez y la coherencia con componentes predefinidos, mientras que Tailwind es superior para la personalización y la optimización de tamaño de CSS para diseños únicos.
+
+---
+
+### Carga personalizada de Bootstrap
+
+Cuando hablamos de mejorar el rendimiento de Bootstrap con una carga personalizada, nos referimos principalmente a reducir el tamaño del CSS y JavaScript que se carga en tu sitio web, y optimizar cómo y cuándo se cargan esos recursos. Bootstrap, por defecto, viene con una gran cantidad de estilos y funcionalidades que quizás no necesites para tu proyecto específico.
+
+Descarga los archivos fuente de Sass: En lugar de los archivos CSS compilados, descarga el código fuente de Bootstrap (archivos .scss).
+
+Importa solo lo que necesitas: Bootstrap está modularizado. Puedes crear tu propio archivo Sass (por ejemplo, custom-bootstrap.scss) e importar solo los componentes, utilidades y variables que realmente utilizas.
+
+Compila Sass a CSS: Utiliza un compilador Sass (como Node-Sass, Dart Sass con Webpack, Parcel, Gulp, o un compilador en línea) para transformar tu archivo custom-bootstrap.scss en un archivo CSS final.
+
+Minificación: Asegúrate de que el proceso de compilación Sass también minifique el CSS resultante. Esto eliminará espacios en blanco, comentarios y optimizará el código.

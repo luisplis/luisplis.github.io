@@ -1,0 +1,71 @@
+---
+import conf from "@conf"
+const { map = false } = Astro.props;
+import Anime from '@components/Anime.astro';
+import Image from '@components/Image.astro';
+---
+<aside id="aside" class="bg-white">
+  <div class="container-fluid py-4">
+    <h2 class="text-primary text-center mb-3">
+      <strong>{conf.term}</strong>
+    </h2>
+    <div class="row align-items-center">
+      <div class="col-12 col-md-3 mb-3">
+        <Anime class="text-center" animate="lightSpeedInLeft" duration="2s" edge="0.2">
+          <Image src={conf.snap} class="img-fluid" width="180" height="180"/>
+        </Anime>
+      </div>
+      <div class="col-12 col-md-5">
+        <p class="lead title">
+          {conf.desc}
+        </p>
+        <p class="small text">
+          {conf.text}
+        </p>
+        <p>
+          <span class="bi bi-dash-lg"></span>
+          <strong class="small title">Opiniones y valoraciones: </strong>
+          <span class="bi bi-dash-lg"></span>
+          <a class="link display" href="https://g.co/kgs/LBJ1Yaa" title="Cerrajeros en Segovia, solicita presupùesto en tu cerrajería más cercana sin compromiso" target="_blank">
+            <span class="bi bi-star-fill text-secondary text-shadow fs-3"></span>
+          </a>
+        </p>
+        {map &&
+        <p>
+            <span class="bi bi-dash-lg"></span>
+            <strong class="small title">¿Cómo llegar a la ferretería?</strong>
+            <span class="bi bi-dash-lg"></span>
+          <a class="ganchor" href="#mapa" title="Cómo llegar">
+            <span class="bi bi-geo-alt-fill text-custom text-shadow fs-3"></span>
+          </a>
+        </p>}
+      </div>
+      <div class="col-12 col-md-3 offset-md-1">
+        <p>
+          <a class="" data-ga-event="click:contacto=mail" href={'mailto:'+conf.email} title={conf.desc} target="_blank">
+            <span class="bi bi-envelope-fill me-1" aria-hidden="true"></span>
+            <span class="title">{conf.email}</span>
+          </a>
+        </p>
+        <p>
+          <a class="btn btn-primary w-70" data-ga-event="click:contacto=telefono" href={'tel:'+conf.call} title={conf.term} rel="noreferrer" target="_blank">
+            <span class="bi bi-telephone-outbound-fill" aria-hidden="true">&nbsp;</span>
+            <span class="title">{conf.phone}</span>
+          </a>
+        </p>
+        <p>
+          <a class="btn btn-custom w-70" data-ga-event="click:contacto=whatsapp" href={'https://wa.me/'+conf.chat+'?text='+conf.term} title={conf.name}  target="_blank" rel="noopener">
+            <span class="bi bi-whatsapp" aria-hidden="true">&nbsp;</span>
+            <span class="title">{conf.whatsapp}</span>
+          </a>
+        </p>
+        <address>
+          <span class="bi bi-geo-alt-fill me-1" aria-hidden="true"></span>
+          {conf.address}
+          <br/>
+          {conf.location}
+        </address>
+      </div>
+    </div>
+  </div>
+</aside>

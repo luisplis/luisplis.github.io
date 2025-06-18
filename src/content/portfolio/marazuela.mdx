@@ -1,0 +1,77 @@
+---
+name: App Lecturas Remotas
+term: Aplicación para gestionar y mostrar lecturas remotas de consumo en contadores
+desc: Diseño y desarrollo de aplicación web y base de datos para facilitar las lecturas remotas de consumo en contadores en comunidades de vecinos y el acceso a lo mismos para ver su consumo individual.
+link: https://www.raulmarazuela.es/in
+date: '2023'
+menu: 90
+tags: [appweb, bigdata]
+---
+
+## Lecturas de contadores de agua caliente y calefacción
+
+Todos los contadores individuales en las comunidades de vecinos tienen protocolo de lectura abierta "OMS", 
+por lo que cualquier empresa lectora puede leerlos en remoto y por Wifi.
+
+Puesta en marcha de una aplicación web que permite gestionar las comunidades de vecinos y sus
+correspondientes lecturas de contadores, teniendo en cuenta que cada vecino puede disponer de
+varios contadores energéticos y a su vez de varios tipos de lecturas.
+
+Implementar un interfaz de gestión de usuarios (login/logout) basado en perfiles o “roles” de usuario
+que atienda a la operativa y funciones disponibles de la aplicación web:
+1. Administrador: es el oficial técnico responsable de la aplicación, registra usuarios, comunidades,
+contadores y realiza las lecturas y mediciones individuales de cada vecino.
+2. Gestor: es el personal administrativo o gestor de fincas → puede entrar a la aplicación para ver un
+resumen contable de su comunidad o acceder a los datos básicos de sus vecinos.
+3. Vecino: vecino de la comunidad → individualmente, cada vecino podrá ver las lecturas de cada uno
+de sus contadores (por tipo de contador) y descargar o imprimir sus liquidaciones mensuales.
+
+Ofrecer al administrador y al gestor de comunidades un escritorio dentro de la aplicación con
+resumen del mes actual e histórico contable para facilitar la gestión de cada comunidad de vecinos.
+
+Automatizar el proceso de lecturas de contadores a través de dispositivos inalámbricos Ad Hoc
+diseñados para lecturas masivas que realiza el “oficial técnico” in situ. Estas máquinas lectoras
+almacenan o exportan los datos en ficheros CSV o XML, de modo, que es imprescindible desarrollar
+un proceso para importar a la aplicación las lecturas del fichero resultante teniendo en cuenta el
+histórico de lecturas mensuales anteriores sin perjuicio para la integridad de los datos (histórico =
+histórico + lecturas).
+
+Disponer de las configuraciones necesarias para que el administrador pueda generar de forma
+automática las liquidaciones de cada vecino según sus propios parámetros y factores de corrección.
+
+Implementar la forma de acceso online para que cada vecino pueda entrar en el sistema a ver sus
+lecturas de sus contadores individuales de forma ordenada e intuitiva y descargar o imprimir su
+liquidaciones en PDF (formato estándar).
+
+### Metas y Objetivos
+
+Desde el inicio del proyecto web incluimos posicionamiento web avanzado, marcado semántico, microdatos y robots.
+El posicionamiento web lleva implícito la medición de resultados con informes periódicos de estadísticas.
+
+Comunicar a los usuarios vía email cuando se ha producido algún evento en la aplicación por parte
+del administrador o se ha cerrado el mes actual y generado su correspondiente liquidación en PDF
+con las lecturas correspondientes e información gráfica de sus contadores (consumo/ahorro
+energético).
+
+Ampliar los procesos capaces de importar la información de los dispositivos lectores mediante datos
+estructurados XML para compatibilizar el uso de la aplicación con otras marcas y máquinas emisoras
+de estas lecturas.
+
+Optimizar el proceso automático de lecturas sobre los contadores para que sea posible ejecutarse en
+modo manual “datagrid” (sin fichero de datos estructurado) reduciendo el tiempo de trabajo al
+mínimo y automatizando tareas repetitivas de administración por si no fuese posible usar las
+máquinas de lectura sobre el el terreno .
+
+### Tecnología MasWeb
+Empleamos un framework propio de desarrollo Nubega v-2.1 (software propio para crear aplicaciones optimizadas
+con el fin de agilizar el diseño y desarrollo de la aplicación web, reduciendo costes y tiempos de programación.
+Además, el framework usado aporta seguridad, desempeño y calidad en la puesta en marcha del proyecto, 
+porque utiliza el patrón HMVC, fué creado por MasWeb para agilizar el desarrollo de aplicaciones web, 
+y es compatible con la mayoría de servidores web en su última versión, su núcleo es escalable mediante módulos y componentes.
+
+"Características Generales"
+-Desarrollo Web: PHP 8 + Composer + Slots.
+-Diseño Web: HTML5 + CSS3 + JS Vanilla + Bootstrap 5.
+-Bases de datos: Active MySQL Record + Admin CRUD generator.
+-Otras Características: PHPMailer, GeneratorPDF, File Finder, Cron, etc.
+

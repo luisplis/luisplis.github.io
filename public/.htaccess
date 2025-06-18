@@ -1,0 +1,84 @@
+AddDefaultCharset UTF-8
+SetOutputFilter DEFLATE
+Options -Indexes 
+
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET,PUT,POST,DELETE"
+Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+
+<IfModule mod_headers.c>
+    Header unset ETag
+    Header set Cache-Control "private, max-age=3600, must-revalidate"
+    Header append Cache-Control "public, must-revalidate"
+    <FilesMatch "\.(css|js|jpg|jpeg|png|gif|ico|woff|eot|svg|ttf|woff|woff2)$">
+        # 1 semana (60*60*24*7)
+        Header set Cache-Control "max-age=604800"
+        RequestHeader unset Cookie
+        Header unset Set-Cookie
+    </FilesMatch>
+    FileETag None
+    Header append Vary User-Agent env=!dont-vary
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresDefault "access plus 1 hour"
+    <Filesmatch "\.(js|css|jpg|jpeg|png|gif|ico|woff|eot|svg|ttf|woff|woff2)$">
+        ExpiresDefault "access plus 7 days"
+    </Filesmatch>
+    ExpiresByType application/javascript "access plus 1 hour"
+    ExpiresByType application/x-javascript "access plus 1 hour"
+    ExpiresByType application/xml "access plus 12 hours"
+    ExpiresByType application/rss+xml "access plus 12 hours"
+    ExpiresByType application/json "access plus 0 seconds"
+</IfModule>
+
+#AuthName "Acceso Privado"
+#AuthType Basic
+#    SetEnvIf Authorization "(.*[^\.zip]$)" HTTP_AUTHORIZATION=$1
+#    AuthUserFile /home/luis/www/lbg/www/.htpass
+#    #AuthUserFile /home/nubega/git/lbg/www/.htpass
+#    #AuthGroupFile /dev/null
+#Require valid-user
+#Deny from all
+#Satisfy any
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/x-javascript
+</ifmodule>
+
+# cerrajerew.cluster014.ovh.net/
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    Redirect 301 /accesorios                    /segovia
+    Redirect 301 /seguros                       /reparaciones
+    Redirect 301 /copia-llaves-coche            /cambia-cerradura
+    Redirect 301 /copia-mandos-garaje           /copia-mandos
+    Redirect 301 /puertas-blindadas             /puertas
+    Redirect 301 /puertas-acorazadas            /puertas
+    Redirect 301 /seguridad                     /segovia
+    
+    # SSL (redirect)
+    RewriteCond %{HTTPS} off
+    RewriteCond %{HTTP_HOST} (\.com|\.es)$
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # WWW (redirect)
+    RewriteCond %{HTTP_HOST} (\.com|\.es)$
+    RewriteCond %{HTTP_HOST} !^$
+    RewriteCond %{HTTP_HOST} !^www\. [NC]
+    RewriteCond %{HTTPS}s ^on(s)|
+    RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+    
+    # SLASHES (!post)
+    RewriteCond %{REQUEST_URI} /+[^\.]+$ [NC]
+    RewriteCond %{REQUEST_METHOD} !POST [NC]
+    RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+    
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    RewriteRule . index.html [QSA,L]
+</IfModule>

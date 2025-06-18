@@ -1,0 +1,46 @@
+---
+layout: ../../layouts/Blog.astro
+author: Astro Learner
+name: React y Angular para proyectos
+term: React o Angular, ¿cual es el más adecuado en proyectos web exigentes con requisitos de alta interactividad e integración de datos bajo demanda?
+desc: Angular es muy potente y escalable para diseñar, desarrollar y mantener aplicaciones complejas, sin embargo, React es rápido y versátil a la hora de poner en marcha proyectos ágiles y funcionales.
+snap: /media/angular-vs-react.webp
+date: 09/03/2025
+tags: ["desarrollo-web", "angular", "react"]
+---
+
+## Angular VS React en sus últimas versiones
+
+This post should show up with my other blog posts, because `import.meta.glob()` is returning a list of all my posts in order to create my list.
+
+To request multiple images of the same size in your browser, add the random query param to prevent the images from being cached:
+
+<img class="img-fluid mb-3" src="https://picsum.photos/700/400/?random=1" alt="random image 1"/>
+
+To get an image in the WebP format, you can add .webp to the end of the url.
+
+### Angular Signals VS React Hooks
+
+Las "Signals" de Angular son un nuevo paradigma de reactividad que introducen en Angular 16 para mejorar el rendimiento y la experiencia de desarrollo. Permiten un control más granular sobre cuándo se actualizan las vistas, evitando re-renderizados innecesarios.
+
+En React, el concepto equivalente más cercano a la gestión de estado reactivo y la optimización de re-renderizados que ofrecen los Signals de Angular se encuentra en una combinación de varias características y patrones
+
+1. useState (El equivalente más directo para el estado local): este Hook es el pilar para gestionar el estado dentro de un componente funcional en React. Cada vez que actualizas el estado con set de useState, React programa un re-renderizado del componente.
+2. useMemo (Para valores derivados y memoización): cuando tienes valores que dependen de otros estados o props y quieres evitar recálculos innecesarios en cada re-renderizado, useMemo es el equivalente a computed() de Angular Signals. Solo se recalcula si sus dependencias cambian.
+3. useEffect (Para efectos secundarios): similar a los effect() de Angular Signals, useEffect en React te permite realizar efectos secundarios (como suscripciones, manipulaciones del DOM, llamadas a API) en respuesta a cambios en el estado o las props.
+
+<img class="img-fluid mb-3" src="https://picsum.photos/700/400/?random=2" alt="random image 2"/>
+
+### Conclusión
+
+No hay una característica única en React que sea el equivalente exacto y directo de los Angular Signals. En cambio, React logra una gestión de estado reactiva y una optimización del rendimiento a través de una combinación de:
+
+ - useState: Para el estado local del componente.
+ - useMemo: Para valores derivados memoizados.
+ - useEffect: Para efectos secundarios y observar cambios.
+
+#### Reactividad
+Context API / Librerías de manejo de estado externas: Para el estado global y compartido, algunas de las cuales (como Zustand, Jotai, Preact Signals) ofrecen un modelo de reactividad más granular similar a las Signals de Angular.
+
+#### Angularidad
+Mientras que Angular Signals están diseñados para ser una primitiva de reactividad que aborda la detección de cambios de manera más granular y eficiente de forma nativa, React se basa en un modelo de re-renderizado de componentes y utiliza Hooks y la memoización para optimizar ese proceso. La filosofía de React se centra en re-renderizar un árbol de componentes cuando el estado cambia y luego reconciliar los cambios con el DOM virtual, mientras que los Signals de Angular permiten que el framework sepa exactamente qué partes del DOM necesitan actualizarse sin re-evaluar todo el componente.

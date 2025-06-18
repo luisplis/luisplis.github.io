@@ -1,0 +1,127 @@
+---
+import Main from '@layouts/Main.astro';
+import Card from '@components/Card.astro';
+import Cover from "@components/Cover.astro";
+import Image from "@components/Image.astro";
+import ViewPort from "@components/ViewPort.astro";
+import Anime from '@components/Anime.astro';
+import Pagination from '@components/Pagination.astro';
+import conf from '@conf';
+
+export const name = "Proyectos";
+export const term = "Aplicaciones web fullstack, diseño y desarrollo de proyectos web";
+export const desc = "Portfolio de proyectos y aplicaciones web más destacados de mi cosecha productiva";
+export const snap = "/misc/photo-1624916145576-5b5772d9bccb.avif";
+
+import { getCollection } from 'astro:content';
+import type { GetStaticPathsOptions, Page } from '@node/astro';
+
+/*
+** https://docs.astro.build/es/guides/routing/#paginaci%C3%B3n-anidada
+*/
+export async function getStaticPaths({ paginate }) {
+  const allPytos = await getCollection("portfolio", ({ data }) => {
+    return data.tags.length > 0 ? true : false;
+  });
+  const allTags = [...new Set(allPytos.map((pyto: any) => pyto.data.tags).flat())];
+
+  return allTags.flatMap((tag) => {
+    const filteredPosts = allPytos.filter((post) => post.data.tags.includes(tag));
+    // const filteredPosts = allPytos.filter(({data}) => data.tags.includes(tag));
+    return paginate(filteredPosts, {
+      params: { tag },
+      pageSize: conf.paginate
+    });
+  });
+}
+
+const styles = {
+		name: 'h3 link-black mt-2 mb-0',
+		desc: 'lead mb-2',
+		term: 'small badge bg-secondary me-1',
+		snap: 'img-fluid',
+		icon: 'bi bi-chevron-right',
+		link: 'float-end mb-0 btn btn-outline-primary btn-sm icon-link icon-link-hover stretched-link' 
+}
+const { tag } = Astro.params as any;
+const { page } = Astro.props as any;
+---
+<Main class="main bg-primary bg-opacity-15" title={name+' - '+page.currentPage+': '+term} description={page.currentPage}>
+<Cover src="/background.svg">
+  <div class="container p-3">
+    <div class="row align-items-end">
+      <div class="col-12 col-lg-4 offset-lg-2 h-100 mb-3">
+        <div class="bg-white bg-opacity-50 text-center p-3">
+          <h1 class="h2 text-black text-center mt-3 mb-3">
+            Proyectos <small class="badge bg-dark">{tag}</small>
+          </h1>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4 h-100 mb-3">
+        <p class="mb-2">
+          Hay <strong>{ page.data.length}</strong> proyectos <strong>{tag}</strong>
+        </p>
+        <a class="btn btn-outline-primary" href={conf.base+'/proyectos'} title="Volver al listado de todos los proyectos">
+          <span class="bi bi-backspace me-1"></span> Ver todos los Proyectos
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="bg-primary bg-opacity-25">
+    <div class="container-fluid p-3">
+        <div class="row mt-n4" data-masonry='{"percentPosition":true}'>
+        {
+          page.data.map((project) => {
+              const { data, slug } = project;
+              return <div class="col-12 col-md-4 col-lg-3">
+                <Card class="mb-3">
+                  <div class="card-image" transition:name={'pyto-image-'+slug}>
+                    <Image src={'/pytos/'+slug+'/preview'} view="false"/>
+                  </div>
+                  <div class="card-title">
+                    <h2 class="h3 link-black mb-0" transition:name={'pyto-title-'+slug}>
+                      {data.name}
+                    </h2>
+                  </div>
+                  <div class="card-text">
+                    <p class="lead mb-2">
+                      {data.term}
+                    </p>
+                    <div class="tags">
+                      { (!Array.isArray(data.tags) && term && data.tags === tag) &&
+                        <span class="small badge bg-dark me-1">{data.term} </span>
+                      }
+                      { (!Array.isArray(data.tags) && term && data.tags !== tag) &&
+                        <span class="small badge bg-secondary me-1">{data.term} </span>
+                      }
+                      {
+                      Array.isArray(data.tags) && data.tags.map((item) => {
+                        if (item == tag)
+                          return <span class="small badge bg-dark me-1">{item}</span>
+                        else
+                          return <span class="small badge bg-secondary me-1">{item}</span>
+                        })
+                      }
+                    </div>
+                    <a class="float-end mb-0 btn btn-outline-primary btn-sm icon-link icon-link-hover stretched-link" href={conf.base+'/proyectos/'+slug} title={'Ir a Proyecto #'+slug+' -- '+data.menu+''}>
+                      Ver Más <span class="bi bi-chevron-right"></span>
+                    </a>
+                  </div>
+                </Card>
+              </div>
+          })
+        }
+      </div>
+    </div>
+    <div class="text-center mt-1">
+        <Pagination page={page} />
+    </div>
+  </div>
+  <div class="bg-white text-center p-3">
+    <a class="btn btn-outline-primary" href={conf.base+'/proyectos'} title="Volver al listado de todos los proyectos">
+      <span class="bi bi-backspace me-1"></span> Ver todos los Proyectos
+    </a>
+  </div>
+</Cover>
+<script is:inline src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+</Main>

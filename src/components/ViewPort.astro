@@ -1,0 +1,60 @@
+---
+const {
+	class: className = '',
+	style = '',
+	speed = '0.5s',
+	delay = '0',
+	outer = '0px',
+	edge = '0.5',
+	callback = ''
+} = Astro.props;
+const id = 'view-'+Math.random().toString(16).slice(-5);
+let html = await Astro.slots.render('default');
+const params = { rootMargin: outer+' 0px '+outer+' 0px', threshold: edge };
+const timer = Number(delay);
+const call = callback;
+---
+<div id={id} class={className} style={style}>
+	<!--@slot/-->
+	<script define:vars={{ id, html, speed, timer, params, call }} is:inline>
+		const temp = document.createElement('div');
+		temp.innerHTML = html;
+		const scripts   = temp.querySelectorAll('script[src]');
+		const callbacks = { 'call': call };
+		const component = document.getElementById(id);
+		component.style.opacity = 0;
+		component.style.transition ='opacity '+speed+' ease-in-out';
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					setTimeout(() => {
+						component.innerHTML = html; // @slot
+						component.style.opacity = 1;
+						observer.unobserve(component);
+
+						// Carga dinámica de scripts
+						scripts.forEach(js => {
+							var script = document.createElement('script');
+							script.src = js.src;
+							console.log('ViePort SCRIPT => '+script.src);
+							script.async = true;
+							if (call)
+							script.onload = () => {
+								console.log('ViePort CALLBACK => '+call);
+								new Function(call)();
+							};
+							document.body.appendChild(script);
+						});
+						if (call && !scripts.length)
+						{
+							console.log('ViePort CALLBACK => '+call);
+							return new Function(call)();
+						}
+					}, timer);
+				}
+			});
+		},
+		params);
+		observer.observe(component);
+	</script>
+</div>

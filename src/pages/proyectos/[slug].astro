@@ -1,0 +1,110 @@
+---
+import Main from '@layouts/Main.astro';
+import Cover from "@components/Cover.astro";
+import Card from "@components/Card.astro";
+import Image from '@components/Image.astro';
+
+import { getCollection } from 'astro:content';
+import Anime from '@components/Anime.astro';
+import Gallery from '@components/Gallery.astro';
+import Carousel from '@components/Carousel.astro';
+import ViewPort from '@components/ViewPort.astro';
+import conf from '@conf';
+
+export async function getStaticPaths() {
+  const collection = await getCollection('portfolio');
+  return collection.map((pyto) => ({
+		params: { slug: pyto.slug },
+    props: { pyto },
+  }));
+}
+
+const { pyto } = Astro.props;
+const { slug } = Astro.params;
+const { name, term, desc, tags, link } = pyto.data;
+const { Content } = await pyto.render();
+
+var elink = '';
+if (link)
+	elink = link.split('://').pop().split('/').shift();
+
+---
+<Main class="main bg-primary bg-opacity-15" title={name+': '+term} description={desc}>
+	<Cover src={'/pytos/'+slug+'/preview'} view={'pyto-image-'+slug}>
+		<div class="bg-dark bg-opacity-45">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-12 col-md-6 offset-md-1 col-lg-5 offset-lg-1 py-5 me-md-n3">
+						<Card class="bg-white opacity-85 border border-black shadow-lg">
+							<h1 class="h3 fs-3 text-black" transition:name={'pyto-title-'+slug}>
+								<strong>{name}</strong>
+							</h1>
+							<p class="text-black mb-2">
+								{term}
+							</p>
+						</Card>
+						<div class="d-flex justify-content-between align-items-center">
+							<div id="tags" style="z-index: 999;">
+							{ (tags) &&
+									tags.map( (tag:string) => {
+											return <a class="badge bg-secondary hover m-1" href={conf.base+'/proyectos/categoria/'+tag} title={`Listado de artículos con la etiqueta ${tag}`}>{tag}</a>
+									})
+							}
+							</div>
+							<a class="btn btn-primary btn-sm icon-link icon-link-hover-alt m-1" href="javascript:history.back()" title="volver atrás">
+								<span class="bi bi-chevron-left"></span> Volver
+							</a>
+						</div>
+					</div>
+					<div class="col-12 col-md-4 offset-md-0 col-lg-5 h-100 py-4 ms-md-n3">
+						<Image class="img-fluid rounded" src={'/pytos/'+slug+'/snap'}/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</Cover>
+	<div class="bg-white bg-opacity-85">
+		<div class="container bg-body">
+			<div class="row shadow-lg">
+				<div class="col-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 py-3">
+					<Anime class="mt-2" animate="fadeInRightBig">
+					<p class="lead text-black w-100 w-md-65">
+						{ desc }
+					</p>
+					</Anime>
+					<Anime class="mt-2" animate="fadeInLeftBig">
+					{ link && <a class="link link-primary mb-md-0 float-md-end mt-md-n4" title={name} href={link} target="_blank">{elink}</a> }
+					</Anime>
+					<Anime class="mt-2" animate="fadeInUpBig">
+					{ Content && <Content /> }
+					</Anime>
+				</div>
+			</div>
+		</div>
+	</div>
+	<Cover src={'/proyectos/'+slug+'/preview'} view={'image-'+slug}>
+		<div class="bg-white bg-opacity-65">
+			<div class="container bg-dark bg-opacity-45">
+				<div class="row py-4 g-0">
+					<div class="col-12 col-md-8 offset-md-2">
+						<ViewPort>
+							<Carousel class="shadow-lg shadow-alt" path={'/pytos/'+slug+'/carrusel/'} />
+						</ViewPort>
+					</div>
+				</div>
+			</div>
+		</div>
+	</Cover>
+	<div class="bg-white">
+		<div class="container py-3">
+			<ViewPort>
+				<Gallery path={'/pytos/'+slug+'/galeria/'} masonry="true" />
+			</ViewPort>
+			<div class="text-center pt-3 pb-4">
+				<a class="btn btn-outline-primary btn-sm icon-link icon-link-hover-alt m-1 me-md-3" href="javascript:history.back()" title="volver atrás">
+					<span class="bi bi-chevron-left"></span> Volver
+				</a>
+			</div>
+		</div>
+	</div>
+</Main>

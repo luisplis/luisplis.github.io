@@ -1,0 +1,24 @@
+---
+import Main from '@layouts/Main.astro';
+import Pages from '@components/Pages.astro';
+export const site = 'NONE';
+export const name = 'Mapa Web';
+export const term = 'Mi Legado Profesional';
+export const desc = 'Busco trabajo como desarrollador web preferiblemente FRONTEND y en REMOTO, soy experto en proyectos de diseño, desarrollo y posicionamiento web.';
+export const none = true;
+---
+<Main class="main bg-white" title={name+': '+term} description={desc}>
+	<div class="container-fluid py-4">
+		<div class="container">
+			<h1 class="text-center text-primary mb-4">
+				{term}
+			</h1>
+			<div class="card card-body mx-auto w-65 mb-4">
+				<p class="lead">
+					{desc}
+				</p>
+			</div>
+			<Pages tree="false" masonry="true" />
+		</div>
+	</div>
+</Main>

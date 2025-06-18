@@ -1,0 +1,59 @@
+---
+import Anime from "@components/Anime.astro";
+import Extras from "@components/Extras.astro";
+import conf from '@conf';
+const {} = Astro.props;
+---
+<footer id="footer">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-7 col-xl-8">
+        <div id="links" class="legals d-flex flex-column flex-md-row justify-content-start justify-content-lg-between align-items-center text-center">
+          <a class="btn btn-link" href={conf.base+'/legal'} title="Aviso Legal" rel="nofollow">
+            Aviso Legal
+          </a>
+          <a class="btn btn-link" href={conf.base+'/privacidad'} title="Política de Privacidad" rel="nofollow">
+            Política de Privacidad
+          </a>
+          <a class="btn btn-link cc-link" data-cc="c-settings" href="#main" title="Uso de Cookies" rel="nofollow" aria-haspopup="dialog">
+            Uso de Cookies
+          </a>
+          <a class="btn btn-link" href={conf.base+'/segovia'} title={conf.name+': '+conf.desc}>
+            Mapa Web
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-5 col-xl-4 text-center text-md-end">
+        <Extras view="copy"/>
+      </div>
+    </div>
+  </div>
+  <div id="goto" class="position-fixed scroller bottom-0 end-0 mb-2 me-2" data-scroll="900">
+    <a class="d-inline-flex justify-content-center align-items-center link rounded-circle fs-4 p-1" href="#main" title="Ir arriba">
+        <span class="bi bi-chevron-up fw-bolder em m-1 lh-1" aria-hidden="true"></span>
+        <span class="visually-hidden">Ir arriba</span>
+    </a>
+  </div>
+<script>
+  /**
+   * activeParents: set bootstrap "menu && submenu active" link of parent node
+   */
+  const activeItems = function(){
+
+  const links = document.querySelectorAll('#footer .link, #footer .btn-link');
+  links.forEach(link => {
+    if (link.getAttribute('href') === window.location.pathname) {
+      link.classList.add('active');
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  activeItems();
+});
+document.addEventListener("astro:page-load", () => {
+  activeItems();
+});
+
+</script>
+</footer>

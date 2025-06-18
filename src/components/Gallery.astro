@@ -1,0 +1,54 @@
+---
+import Image, { source } from './Image.astro';
+let {
+    path = '/src/assets',
+    type = '',
+    limit = '0',
+    class: className = 'row g-3',
+    classes = 'col-12 col-md-4 col-lg-3',
+    style = 'img-fluid shadow',
+    width = '',
+    height = '',
+    masonry = true,
+    random = false
+} = Astro.props;
+
+path = source(path);
+limit = Number(limit);
+
+let images: any[] = [];
+
+if (Astro.slots.has('default'))
+{
+    const html = await Astro.slots.render('default');
+    images = html.toString().trim().replace(/\s+/g, '\n').split("\n");
+    images.map((slot: string, i: number) => { images[i] = (path+'/'+slot).replace(/\/\//g, '/'); });
+}
+else
+{
+    const fso = import.meta.glob('/src/assets/**/*.(png|jpg|svg|webp)', { eager: true,  query: '?url' });
+
+    images = Object.entries(fso).filter((item) => item[0].startsWith(path)).flatMap(item => item[0]);
+}
+
+let data = null;
+if (masonry === true || masonry === 'true') data = '{"percentPosition":true}'; // require 'row' className
+
+if (random) images = images.sort(() => 0.5 - Math.random());
+else        images = images.sort();
+if (limit)  images = images.slice(0, limit);
+
+if (!images.length) return ''; // '<!--GALLERY IS EMPTY/-->'
+---
+<div class={className} data-masonry={data}>
+{
+    images.map((image) =>
+        <div class={classes}>
+        <Image class={style} src={image} width={width} height={height}/>
+        </div>
+    )
+}
+</div>
+{ data &&
+<script is:inline src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+}

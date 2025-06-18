@@ -1,0 +1,183 @@
+---
+import Tag from '@components/Tag.astro';
+import Image, { image } from '@components/Image.astro';
+import Card from './Card.astro';
+import { snap } from '@pages/index.astro';
+
+let { 
+  link = null, 
+  path = null, 
+  tree = 'false', 
+  htag = "2", 
+  masonry = false, 
+  class: className = 'row g-3',
+  classes = 'col-12 col-md-4 col-lg-3',
+} = Astro.props;
+
+tree = JSON.parse(tree);
+htag = Number(htag);
+
+export async function pages(path) {
+
+  const fso = import.meta.glob(['/src/pages/**/*.(mdx|astro)', '!/src/pages/**/_*.(mdx|astro)'], { eager: true }); // static path
+
+  let data = Object.entries(fso) as any;
+
+  if (path !== null) data = data.filter(lnk => (lnk[1].url.startsWith(path)));
+
+  data = data.map((data: any) => {
+
+    let lnk:any = null;
+
+    if ('frontmatter' in data[1])
+      lnk = {...data[1]['frontmatter'], file: data[0], path: data[1]['url']};
+    else
+      lnk = {...data[1], file: data[0], path: data[1]['url']};
+
+    let none = ('none' in lnk)? true: false; // hidden
+
+    let url = lnk.path;
+    if (url == '') url = '/';
+    delete lnk.path;
+    const path = url.split('/'); path.pop();
+    let uri = path.join('/');
+    if (uri == '') uri = '/';
+
+    let flag = url.split('/').length - 2;
+
+    let img = null;
+    if ('snap' in lnk) img = image(snap);
+
+    if (lnk.title) lnk.name = lnk.title;
+    if (lnk.description) lnk.desc = lnk.description;
+
+    lnk = {...lnk, none: none, uri: uri, url: url, flag: flag, img: img}
+
+    return lnk;
+  });
+  
+  data = data.filter(lnk => (!/\[\w+\]/.test(lnk.url))); // Case of [page].astro
+
+  data = data.filter(lnk => (lnk.name && lnk.desc && !lnk.none)).sort((x, y) => { return x.flag - y.flag; });
+
+  let struct = data.map((link) => {
+
+    let sort = (100*link.menu);
+
+    if (link.flag > 1)
+    {
+      let node = data.find(node => (node.url == link.uri && (node.flag+1) == link.flag) );
+      if (node)
+      {
+        sort = (100*node.menu)+link.menu;
+      }
+    }
+
+    return  {...link, sort: sort };
+
+  }).map((link) => {
+
+    let type = null;
+
+    if ('link' in link) type = link.link;
+
+    let o = data.findIndex(child => (link.url == child.uri && (link.flag+1) == child.flag) );
+
+    if (o >= 0)
+    {
+      type = 'node';
+    }
+
+    return  {...link, type: type };
+
+  }).map((link) => {
+
+    if (!link.flag)
+      link.type = 'home';
+    else if (link.type == null)
+      link.type = 'item';
+
+    return  {...link};
+
+  }).sort((x, y) => { return x.sort - y.sort; });
+
+  return struct;
+}
+
+let data = await pages(path); // pages function
+
+if (link !== null) data = data.filter((lnk) => (lnk.url === link));
+
+let percent = null;
+if (masonry === true || masonry === 'true') percent = '{"percentPosition":true}'; // require 'row' className
+---
+{ link &&
+<div class={className}>
+  {
+  data.map((lnk) =>
+  <div class="col">
+    <Card name={lnk.name} desc={lnk.desc} snap={lnk.snap}
+          text={lnk.term} slug={lnk.term} link={lnk.url}>
+    </Card>
+  </div>
+  )
+  }
+  {
+    Astro.slots.has('default') &&
+    <slot/>
+  }
+</div>
+}
+{ !link && !tree &&
+<div class={className} data-masonry={percent}>
+  {
+  data.map((lnk) =>
+  <div class={classes}>
+    <Card name={lnk.name} desc={lnk.desc} snap={lnk.snap}
+          text={lnk.term} slug={lnk.term} link={lnk.url}>
+    </Card>
+  </div>
+  )
+  }
+  {
+    Astro.slots.has('default') &&
+    <slot/>
+  }
+</div>
+}
+{ !link && tree &&
+  data.map((lnk, i) =>
+  <ul class="list-group">
+    { (lnk.type == 'item' && data[i-1] && data[i-1].type == 'node')? <Fragment set:html={'<ul class="list list-group">'}/>: '' }
+    <li class={ (data[i].flag <= 1)? 'list-group-item mb-1':'ms-3 list-group-item mb-1' }>
+      <a class="link small" href={lnk.url} title={(lnk?.term)?lnk.term:lnk.desc.slice(0, 40)} data-bs-toggle="popover" data-img={lnk.img}>
+        <strong class={'title'}>
+          { lnk.name }:
+        </strong>
+        <span class={'text'}>
+          { lnk.desc.toLowerCase() }
+        </span>
+      </a>
+    </li>
+    { (lnk.type == 'item' && data[i+1] && data[i+1].type == 'item' && data[i+1].flag == (lnk.flag-1))? <Fragment set:html={'</ul>'}/>: '' }
+  </ul>
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    var popovers = document.querySelectorAll('[data-bs-toggle="popover"]');
+    var popoverTriggerList = [].slice.call(popovers);
+    var popoverList = popoverTriggerList.map(function (el) {
+        if (el.getAttribute('data-img'))
+        return new bootstrap.Popover(el, {
+          title: '',trigger: 'hover', html: true,
+          content: function () {
+            return '<img class="img-fluid" width="320" height="180" src="'+el.getAttribute('data-img')+'" alt="'+el.getAttribute('title')+'" />'; 
+          },
+        });
+    });
+  });
+  </script>
+  )
+}
+{ !tree && percent &&
+<script is:inline src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+}

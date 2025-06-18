@@ -1,0 +1,66 @@
+---
+import Image from "@components/Image.astro";
+import Tag, { slugify } from "@components/Tag.astro";
+
+const { name = null, term = null, desc = null, etag = 'h3', snap = null, text = null, icon = null, link = '#' } = Astro.props;
+const {
+	class: className = 'd-flex flex-column justify-content-between' ,
+	style = {
+		name: 'link fs-3',
+		desc: 'lead mb-2',
+		term: 'small pe-2',
+		snap: 'img-fluid',
+		icon: 'bi bi-chevron-right',
+		link: 'float-end mb-0 icon-link icon-link-hover stretched-link' }
+} = Astro.props;
+---
+<div class={'card card-body '+className}>
+	{ (snap && !Astro.slots.has('default')) &&
+		<div class="card-image">
+			<Image class={style.snap} transition:name={slugify(snap)} src={snap} alt={ name+' '+term }/>
+		</div>
+		}
+	{ (name) &&
+	<div class="card-title">
+		<Tag html={etag} class={style['name']}>
+			{name}
+		</Tag>
+	</div>
+	}
+	{ (snap && Astro.slots.has('default')) &&
+	<div class="card-image">
+		<Image class={ style.snap } transition:name={ slugify(snap) } src={snap} alt={ name+': '+desc }/>
+	</div>
+	}
+	{ Astro.slots.has('default') &&
+	<slot/>
+	}
+	{ (desc) &&
+	<div class="card-text">
+		{ (desc) &&
+		<p class={style.desc}>
+			{desc}
+		</p>
+		}
+		{
+			(Array.isArray(term)) &&
+				term.map((item) => {
+            	return <span class={ style.term }>{item}</span>
+						})
+		}
+		{ (!Array.isArray(term) && term) &&
+		<div class={ style.term }>
+			{term}
+		</div>
+		}
+		{ (link) &&
+			<a class={ style.link } href={link} title={(text !== null)? text: 'Más Información'}>
+				{ (text !== null)? text: 'Leer más' }
+				{ (icon || style.icon) &&
+				<span class={style.icon}>{ (icon !== null)? icon: '' }</span>
+				}
+			</a>
+		}
+	</div>
+	}
+</div>

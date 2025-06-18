@@ -1,0 +1,169 @@
+---
+import Main from '@layouts/Main.astro';
+import Card from '@components/Card.astro';
+import Cover from "@components/Cover.astro";
+import Image from "@components/Image.astro";
+import ViewPort from "@components/ViewPort.astro";
+import Anime from '@components/Anime.astro';
+import Brands from '@components/Brands.astro';
+import Pagination from '@components/Pagination.astro';
+import { strToDate } from '@components/Tag.astro';
+
+import type { GetStaticPathsOptions } from '@node/astro';
+import conf from '@conf';
+
+export const name = "NOTAS";
+export const term = "Mis notas y artículos personales sobre tendencias y tecnología web";
+export const desc = "Artículos de opinión sobre diseño, desarrollo y publicación de aplicaciones web y nuevas tecnologías dedicadas a proyectos web.";
+export const snap = '/dev/developer-now.svg';
+export const menu = 5;
+
+interface PostItem {
+  id: string | undefined;
+  data: Record<string, any>; // O un tipo más específico si conoces la estructura de frontmatter
+  url: string;
+  content: any;
+  render: () => Promise<{
+    Content: any;
+    headings: any[]; // Puedes intentar tipar esto más específicamente si es necesario
+    remarkPluginFrontmatter: Record<string, any>; // O un tipo más específico
+  }>;
+}
+export function getCollectionPosts(): PostItem[] {
+  let posts = Object.entries(import.meta.glob('/src/pages/blog/*.mdx', { eager: true }));
+  /*[
+      '/src/pages/blog/post-2.mdx',
+      [Object: null prototype] [Module] { frontmatter: [Getter], getHeadings: [Getter], url: [Getter], file: [Getter], Content: [Getter], default: [Function] }
+    ],
+  */
+  let allPosts = posts.map(
+    ([file, data]: [string, any]) => {
+      const slug = file.split('/').pop()?.replace('.mdx', '');
+      let object = {
+        slug: slug, // Puedes usar el slug como ID
+        data: data.frontmatter,
+        url: data.url,
+        file: data.file,
+        body: data.Content(), // Si el plugin de MDX proporciona esto
+        content: data.default, // El contenido del archivo  .mdx
+        render: async () => {
+          return {
+            Content: data.default, // El componente React/Vue del MDX
+            headings: [], // Podrías intentar extraer los encabezados si es necesario
+            remarkPluginFrontmatter: {}, // Información adicional del plugin de remark
+          };
+        },
+      } as any; // Usamos 'any' para simplificar, pero podrías definir un tipo más específico
+
+      return object;
+    }
+  );
+  // Sort posts by type of date
+  return allPosts.sort((a,b) => {
+    if (strToDate(a.data.date) < strToDate(b.data.date)) return 1;
+    if (strToDate(a.data.date) > strToDate(b.data.date)) return -1;
+    return 0;
+  });
+}
+
+export async function getStaticPaths({ paginate }): Promise<GetStaticPathsOptions> {
+  return paginate(getCollectionPosts(), { pageSize: conf.paginate });
+}
+
+const { page } = Astro.props as any;
+
+---
+<Main class="main bg-primary bg-opacity-15" title={name+' - '+page.currentPage+': '+term} description={page.currentPage}>
+<div class="bg-transparent">
+<Cover src="/background.svg">
+  <div class="container p-3">
+    <div class="row mb-3">
+      <div class="col-12 col-lg-5 offset-lg-1 order-md-last bg-info bg-opacity-15 p-3">
+        <div class="d-flex flex-column justify-content-center align-items-center bg-white bg-opacity-75 h-100 p-3 ps-3 shadow-lg">
+          <h1 class="h2 text-center text-black text-uppercase mt-2 mb-2">
+              {name}
+          </h1>
+          <p class="lead text-dark">
+            {desc}
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4 offset-lg-1 order-md-first py-3">
+          <Anime animate="bounceInUp" class="text-end">
+            <Image class="img-fluid" src="/dev/kit-digital"/>
+          </Anime>
+      </div>
+    </div>
+  </div>
+  <div class="bg-info bg-opacity-15">
+    <div class="container-fluid p-3">
+        <div class="row mt-n4" data-masonry='{"percentPosition":true}'>
+        {
+          page.data.map((post) => {
+              const { data, slug, url } = post;
+              return <div class="col-12 col-md-4 col-lg-3">
+                <Card class="mb-3">
+                  <div class="card-image" transition:name={'post-image-'+slug}>
+                    <Image src={data.snap} view="false"/>
+                  </div>
+                  <div class="card-title">
+                    <h2 class="h3 link-black mb-0" transition:name={'post-title-'+slug}>
+                      {data.name}
+                    </h2>
+                  </div>
+                  <div class="card-text">
+                    <p class="lead mb-3">
+                      {data.term}
+                    </p>
+                    <p class="bg-white rounded m-n2 p-2 mb-3">
+                      {data.desc}
+                    </p>
+                    <div class="tags">
+                      { (!Array.isArray(data.tags) && term) &&
+                        <span class="small badge bg-custom text-primary me-1">{data.term} </span>
+                      }
+                      {
+                      Array.isArray(data.tags) && data.tags.map((item) => {
+                          return <span class="small badge bg-custom text-primary me-1">{item}</span>
+                        })
+                      }
+                    </div>
+                    <a class="float-end mb-0 btn btn-outline-primary btn-sm icon-link icon-link-hover stretched-link" href={url} title={'Ir al Artículo #'+slug}>
+                      Leer <span class="bi bi-chevron-right"></span>
+                    </a>
+                  </div>
+                </Card>
+              </div>
+          })
+        }
+      </div>
+    </div>
+  </div>
+</Cover>
+</div>
+  <div class="text-centers bg-white bg-opacity-50">
+    { page.end == 1 &&
+      <div class="py-3 bg-white">
+        <p class="lead text-center mb-0">{term}</p>
+      </div>
+    }
+    { page.end > 1 &&
+      <Pagination page={page} />
+    }
+  </div>
+  <div class="d-flex flex-row g-4 justify-content-around align-items-end bg-white p-3">
+    <div class="align-seft-center">
+      <Image class="img-fluid mx-3" src="/favicon.svg"/>
+    </div>
+    <div class="mx-3">
+      <p class="mb-0"><strong>Luis Martín</strong></p>
+    </div>
+    <div class="">
+      <p class="lead mb-0 w-75">
+        Aquí dejo constancia de mis inquietudes e intereses como desarrollador web, aporto un pequeño
+        leagado de notas y artículos que quiero conservar y tener en cuenta a nivel personal y profesional.
+      </p>
+    </div>
+  </div>
+<script is:inline src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+</Main>
