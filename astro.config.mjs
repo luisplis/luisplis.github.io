@@ -8,7 +8,7 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   output: 'static',
   site: 'https://luisplis.github.io',
-  base: '/portfolio', // idea: reemplazar site.conf o "/portfolio" en recursos por // y redirecionado a /portfolio
+  base: '/', // idea: reemplazar site.conf o "/portfolio" en recursos por // y redirecionado a /portfolio
 /*outDir: './dist',*/
   integrations: [
     mdx(),

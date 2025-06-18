@@ -1,7 +1,7 @@
 
 const conf = {
     site: 'https://luisplis.github.io',
-    base: '/portfolio',
+    base: '/',
     name:       'Astro Web', 
     term:       'Experto Desarrollador Web', 
     desc:       'Desarrollo de proyectos web optimizados en rendimiento para mejorar el rendimiento y la calidad en posicionamiento',
