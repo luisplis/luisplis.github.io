@@ -551,9 +551,7 @@ ul.list-chevron, ol.list-chevron {
     .link.link-info { color: shade-color($info, 20%) !important; }
     .link.link-success { color: shade-color($success, 40%) !important; }
     .link.link-social {
-        transition: all 500ms ease-in-out ;
-        background-color: $transparent;
-        &:hover {  background-color: $light; }
+        transition: all 200ms ease-in-out ;
     }
     .branding {
         margin: 1rem;
@@ -574,105 +572,74 @@ ul.list-chevron, ol.list-chevron {
         .title { padding: 0 0.05em; font-size: 0.8rem; text-shadow: 0em 0em 0.3em -0.15em $white; }
     }
     .branding-alt {
-        position: relative;
-        margin: 0.5rem;
-        margin-left: 0;
-        padding-bottom: 13px;
+        display: block;
+        margin: 0 0.75rem;
         background-image: url('/logo-white.svg'); 
-        width: 85px; height: 100px; background-size: cover;
+        width: 124px; height: 100px; background-size: cover;
         line-height: 0;
         color: $light;
         &:hover { 
             color: $custom;
         }
-        .text-alt {
-            position: absolute;
-            top: 70%;
-            left: 13%;
+    }
+    .navbar-toggler {
+        padding: 0;
+        &:focus { box-shadow: none; }
+        .nav-link { 
+            font-size: 2em;  
+            color: $black; 
+            &:hover, &.active {
+                color: $primary;
+            }
         }
     }
-    #navigation  {
-        .navbar-toggler {
-            padding: 0;
-            &:focus { box-shadow: none; }
-            .nav-link { 
-                font-size: 2em;  
-                color: $black; 
-                &:hover, &.active {
-                    color: $primary;
-                }
+    .link.link-social {
+        background-color: rgba($white, 0.85);
+        &:hover, &.active {
+            background-color: $white;
+        }
+    }
+    .offcanvas-header { 
+        padding-bottom: 0;
+    }
+    .offcanvas {
+        .nav-item .nav-link {
+            font-size: 1.05rem;
+            font-family: $font-display;
+            text-transform: uppercase;
+            line-height: 1.45rem;
+            color: $black;
+            &.active {
+                color: shade-color($primary, 20%);
+            }
+            &:hover {
+                color: $primary;
+            }
+            transition: all 300ms ease-in-out;
+        }
+        &.show {
+            .nav-item .nav-link {
+                color: $white;
             }
         }
-        .offcanvas {
-            .nav-item .nav-link {
-                font-size: 1.05rem;
-                font-family: $font-display;
-                text-transform: uppercase;
-                line-height: 1.45rem;
+        .dropdown-menu {
+            margin-top: -3px;
+            background-color: shade-color($white, 7%);
+            .nav-link {
+                font-size: 1rem;
+                font-family: $font-text;
+                font-weight: normal;
+                text-transform: none;
+                line-height: 1.2rem;
+                padding-left: 1em;
                 color: $black;
                 &.active {
-                    color: shade-color($primary, 20%);
+                    color: shade-color($primary, 50%);
+                    background-color: $white;
                 }
                 &:hover {
-                    color: tint-color($primary, 20%);
-                }
-                transition: all 300ms ease-in-out;
-            }
-            &.show {
-                .nav-item .nav-link {
-                    color: $white;
-                }
-            }
-            .dropdown-menu {
-                margin-top: -3px;
-                background-color: shade-color($white, 7%);
-                .nav-link {
-                    font-size: 1rem;
-                    font-family: $font-text;
-                    font-weight: normal;
-                    text-transform: none;
-                    line-height: 1.2rem;
-                    padding-left: 1em;
-                    color: $black;
-                    &.active {
-                        color: tint-color($primary, 30%);
-                        background-color: $white;
-                    }
-                    &:hover {
-                        color: tint-color($primary, 50%);
-                        background-color: $white;
-                    }
-                }
-            }
-        }
-        @include media-breakpoint-down(lg) {
-            .offcanvas {
-                background-color: $black;
-                .navbar-nav {
-                    .nav-item {
-                        border-bottom: 1px solid tint-color($black, 10%);
-                        .nav-link {
-                            font-size: 1.05rem;
-                            font-weight: normal;
-                            padding: 0.75em 1em;
-                            &.active { color: $secondary; }
-                            &:hover  { color: $custom; }
-                        }
-                    }
-                    .dropdown-menu {
-                        box-shadow: none;
-                        .nav-link {
-                            font-size: 1rem;
-                            padding-left: 1em;
-                            color: shade-color($white, 20%);
-                            background-color: tint-color($black, 10%);
-                            &.active { color: tint-color($secondary, 30%); }
-                            &:hover  { color: tint-color($custom, 30%); }
-                        }
-                    }
-                    .dropdown-menu .nav-item:not(:last-child) .nav-link {
-                        border-bottom: 1px solid shade-color($black, 10%);
-                    }
+                    color: tint-color($primary, 50%);
+                    background-color: $white;
                 }
             }
         }
@@ -691,11 +658,12 @@ ul.list-chevron, ol.list-chevron {
         .branding {
             margin: 0.5rem;
             margin-left: 0;
+            margin-bottom: -1.5rem;
             padding-bottom: 13px;
             background-image: url('/logo-white.svg'); width: 44px; height: 50px; background-size: cover;
             line-height: 0;
             color: $light;
-            &:hover { 
+            &:hover {
                 color: $custom;
             }
             .display { font-size: 0.5rem; }
@@ -704,6 +672,63 @@ ul.list-chevron, ol.list-chevron {
                 font-size: 0.45rem;
                 padding: 0 0.2em;
                 text-shadow: 0em 0em 0.3em -0.15em $black;
+            }
+        }
+        .navbar-toggler {
+            .nav-link {
+                color: $white;
+                &:hover, &.active {
+                    color: $custom;
+                }
+            }
+        }
+        .offcanvas {
+            .nav-item .nav-link {
+                color: $white;
+                &.active {
+                    color: tint-color($primary, 50%);
+                }
+                &:hover {
+                    color: $custom;
+                }
+                transition: all 300ms ease-in-out;
+            }
+        }
+    }
+    @include media-breakpoint-down(lg) {
+        .offcanvas {
+            background-color: tint-color($black, 10%);
+            .navbar-nav {
+                .nav-item {
+                    border-bottom: 1px solid tint-color($black, 25%);
+                    .nav-link {
+                        font-size: 1.05rem;
+                        font-weight: normal;
+                        padding: 0.75em 1em;
+                        &.active { color: $secondary; }
+                        &:hover  { color: $custom; }
+                    }
+                }
+                .dropdown-menu {
+                    box-shadow: none;
+                    .nav-link {
+                        font-size: 1rem;
+                        padding-left: 1em;
+                        color: shade-color($white, 20%);
+                        background-color: tint-color($black, 10%);
+                        &.active { color: tint-color($secondary, 30%); }
+                        &:hover  { color: tint-color($custom, 30%); }
+                    }
+                }
+                .dropdown-menu .nav-item:not(:last-child) .nav-link {
+                    border-bottom: 1px solid shade-color($black, 10%);
+                }
+            }
+            .link.link-social {
+                background-color: transparent;
+                &:hover, &.active {
+                    background-color: black;
+                }
             }
         }
     }

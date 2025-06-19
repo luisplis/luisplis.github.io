@@ -46,29 +46,29 @@ const code = Object.entries(conf).reduce((resultado, [clave, valor]) => {
 	</div>
 )}
 {view === 'navs-logo-mobile' && (
-	<div class="branding-alt">
-			<div class="text-alt"><span class="lead display">&lbrace;</span><strong class="title lh-lg ">luisplis</strong><span class="lead display">&rbrace;</span></div>
-	</div>
+	<a class="img-fluid me-auto mb-0" href={conf.base+'/'} title={conf.term}>
+		<span class="branding-alt">&nbsp;</span>
+	</a>
 )}
 {view === 'navs-info-mobile' && (
 <div class={style}>
 	<div class="d-flex flex-row justify-content-center align-items-center gap-3 mb-3">		
-		<a class="btn btn-success rounded-circle btn-lg" data-ga-event="click:contacto=conf.whatsapp" href={'https://wa.me/'+conf.chat+'?text='+conf.term} title={conf.term}  target="_blank" rel="noopener">
+		<a class="btn btn-outline-success rounded-circle btn-lg" data-ga-event="click:contacto=conf.whatsapp" href={'https://wa.me/'+conf.chat+'?text='+conf.term} title={conf.term}  target="_blank" rel="noopener">
 			<span class="bi bi-whatsapp fs-3" aria-hidden="true"></span>
 		</a>
 		<a class="link link-social rounded-circle btn-lg" href="https://github.com/luisplis/" style="width: 50px; height: 50px;" target="_blank">
 			<Image class="img" src="/icons8-github.svg" width="50" height="50" alt="programador web"/>
 		</a>
-		<a class="link link-social rounded-circle" href="https://es.linkedin.com/in/luisplis/es" style="width: 50px; height: 50px;" target="_blank">
+		<a class="link link-social rounded" href="https://es.linkedin.com/in/luisplis/es" style="width: 50px; height: 50px;" target="_blank">
 			<Image class="img" src="/icons8-linkedin.svg" width="50" height="50" alt="desarrollador web"/>
 		</a>
-		<a class="btn btn-info rounded-circle btn-lg" data-ga-event="click:contacto=telefono" href={'tel:'+conf.call} title={conf.term} rel="noreferrer" target="_blank">
+		<a class="btn btn-outline-info rounded-circle btn-lg" data-ga-event="click:contacto=telefono" href={'tel:'+conf.call} title={conf.term} rel="noreferrer" target="_blank">
 			<span class="bi bi-phone-vibrate fs-3" aria-hidden="true"></span>
 		</a>
 	</div>
 	<p class="text-center">
-		<a class="btn btn-outline-custom" data-ga-event="click:contacto=mail" href={'mailto:'+conf.email} title={conf.term} target="_blank">
-			<small class="title">{conf.email}</small>
+		<a class="btn btn-outline-white" data-ga-event="click:contacto=mail" href={'mailto:'+conf.email} title={conf.term} target="_blank">
+			<small class="display">{conf.email}</small>
 		</a>
 	</p>
 </div>
