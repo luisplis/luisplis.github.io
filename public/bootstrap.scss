@@ -573,7 +573,36 @@ ul.list-chevron, ol.list-chevron {
         .display { font-size: 1.15rem; }
         .title { padding: 0 0.05em; font-size: 0.8rem; text-shadow: 0em 0em 0.3em -0.15em $white; }
     }
+    .branding-alt {
+        position: relative;
+        margin: 0.5rem;
+        margin-left: 0;
+        padding-bottom: 13px;
+        background-image: url('/logo-white.svg'); 
+        width: 85px; height: 100px; background-size: cover;
+        line-height: 0;
+        color: $light;
+        &:hover { 
+            color: $custom;
+        }
+        .text-alt {
+            position: absolute;
+            top: 70%;
+            left: 13%;
+        }
+    }
     #navigation  {
+        .navbar-toggler {
+            padding: 0;
+            &:focus { box-shadow: none; }
+            .nav-link { 
+                font-size: 2em;  
+                color: $black; 
+                &:hover, &.active {
+                    color: $primary;
+                }
+            }
+        }
         .offcanvas {
             .nav-item .nav-link {
                 font-size: 1.05rem;
@@ -615,10 +644,6 @@ ul.list-chevron, ol.list-chevron {
                     }
                 }
             }
-        }
-        .navbar-toggler {   padding: 0;
-            &:focus { box-shadow: none; }
-            .nav-link { font-size: 2em; }
         }
         @include media-breakpoint-down(lg) {
             .offcanvas {
