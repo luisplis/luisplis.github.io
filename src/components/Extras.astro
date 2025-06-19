@@ -37,14 +37,6 @@ const code = Object.entries(conf).reduce((resultado, [clave, valor]) => {
 )}
 {view === 'navs-info-desktop' && (
 	<div class="d-flex flex-row align-items-center gap-2 me-2">
-		{/*
-		<a class="link link-info display" data-ga-event="click:contacto=telefono" href="tel:610523169" title={conf.term} rel="noreferrer" target="_blank"> 
-				<span class="bi bi-telephone-outbound-fill fs-3" aria-hidden="true"></span>
-		</a>
-		<a class="link link-success display" data-ga-event="click:contacto=whatsapp" href={'https://wa.me/'+conf.chat+'?'+conf.name} title={conf.term}  target="_blank" rel="noopener">
-				<span class="bi bi-whatsapp fs-2" aria-hidden="true"></span>
-		</a>
-		*/}
 		<a class="link link-social rounded-circle m-0 p-0" href="https://github.com/luisplis/" style="width: 40px; height: 40px;" target="_blank">
 			<Image class="img" src="/icons8-github.svg" width="40" height="40" alt="desarrollo web"/>
 		</a>
@@ -59,7 +51,7 @@ const code = Object.entries(conf).reduce((resultado, [clave, valor]) => {
 {view === 'navs-info-mobile' && (
 <div class={style}>
   <p>
-		<a class="btn btn-warning w-70" data-ga-event="click:contacto=telefono" href={'tel:'+conf.call} title={conf.term} rel="noreferrer" target="_blank">
+		<a class="btn btn-info w-70" data-ga-event="click:contacto=telefono" href={'tel:'+conf.call} title={conf.term} rel="noreferrer" target="_blank">
 			<span class="bi bi-telephone-outbound-fill" aria-hidden="true">&nbsp;</span>
 			<span class="title">{conf.phone}</span>
 		</a>
@@ -70,9 +62,14 @@ const code = Object.entries(conf).reduce((resultado, [clave, valor]) => {
 			<span class="title">{conf.whatsapp}</span>
 		</a>
 	</p>
-	<address class="text-light">
-		<small>{conf.address}</small>
-	</address>
+	<div class="d-flex flex-row align-items-center gap-2 me-2">
+		<a class="link link-social rounded-circle m-0 p-0" href="https://github.com/luisplis/" style="width: 40px; height: 40px;" target="_blank">
+			<Image class="img" src="/icons8-github.svg" width="40" height="40" alt="desarrollo web"/>
+		</a>
+		<a class="link link-social rounded m-0 p-0" href="https://es.linkedin.com/in/luisplis/es" style="width: 40px; height: 40px;" target="_blank">
+			<Image class="img" src="/icons8-linkedin.svg" width="40" height="40" alt="desarrollo web"/>
+		</a>
+	</div>
 	<p>
 		<a class="btn btn-outline-custom text-center" data-ga-event="click:contacto=mail" href={'mailto:'+conf.email} title={conf.term} target="_blank">
 			<small class="title">{conf.email}</small>

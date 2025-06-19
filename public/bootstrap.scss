@@ -574,44 +574,51 @@ ul.list-chevron, ol.list-chevron {
         .title { padding: 0 0.05em; font-size: 0.8rem; text-shadow: 0em 0em 0.3em -0.15em $white; }
     }
     #navigation  {
-        .nav-link {
-            font-size: 1.05rem;
-            font-family: $font-display;
-            text-transform: uppercase;
-            line-height: 1.45rem;
-            color: $black;
-            &.active {
-                color: shade-color($primary, 20%);
+        .offcanvas {
+            .nav-item .nav-link {
+                font-size: 1.05rem;
+                font-family: $font-display;
+                text-transform: uppercase;
+                line-height: 1.45rem;
+                color: $black;
+                &.active {
+                    color: shade-color($primary, 20%);
+                }
+                &:hover {
+                    color: tint-color($primary, 20%);
+                }
+                transition: all 300ms ease-in-out;
             }
-            &:hover {
-                color: tint-color($primary, 20%);
+            &.show {
+                .nav-item .nav-link {
+                    color: $white;
+                }
             }
-            transition: all 300ms ease-in-out;
+            .dropdown-menu {
+                margin-top: -3px;
+                background-color: shade-color($white, 7%);
+                .nav-link {
+                    font-size: 1rem;
+                    font-family: $font-text;
+                    font-weight: normal;
+                    text-transform: none;
+                    line-height: 1.2rem;
+                    padding-left: 1em;
+                    color: $black;
+                    &.active {
+                        color: tint-color($primary, 30%);
+                        background-color: $white;
+                    }
+                    &:hover {
+                        color: tint-color($primary, 50%);
+                        background-color: $white;
+                    }
+                }
+            }
         }
         .navbar-toggler {   padding: 0;
             &:focus { box-shadow: none; }
             .nav-link { font-size: 2em; }
-        }
-        .dropdown-menu {
-            margin-top: -3px;
-            background-color: shade-color($white, 7%);
-            .nav-link {
-                font-size: 1rem;
-                font-family: $font-text;
-                font-weight: normal;
-                text-transform: none;
-                line-height: 1.2rem;
-                padding-left: 1em;
-                color: $black;
-                &.active {
-                    color: $primary;
-                    background-color: $white;
-                }
-                &:hover {
-                    color: tint-color($primary, 20%);
-                    background-color: $white;
-                }
-            }
         }
         @include media-breakpoint-down(lg) {
             .offcanvas {
@@ -672,17 +679,6 @@ ul.list-chevron, ol.list-chevron {
                 font-size: 0.45rem;
                 padding: 0 0.2em;
                 text-shadow: 0em 0em 0.3em -0.15em $black;
-            }
-        }
-        #navigation  {
-            .nav-link {
-                color: $white;
-                &.active {
-                    color: tint-color($primary, 30%);
-                }
-                &:hover {
-                    color: tint-color($primary, 50%);
-                }
             }
         }
     }
