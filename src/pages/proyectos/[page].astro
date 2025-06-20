@@ -16,6 +16,7 @@ export const snap = "/misc/photo-1624916145576-5b5772d9bccb.avif";
 
 import { getCollection } from 'astro:content';
 import type { GetStaticPathsOptions, Page } from '@node/astro';
+import Brands from '@components/Brands.astro';
 
 /*
 ** https://docs.astro.build/es/guides/routing/
@@ -104,10 +105,8 @@ const { page } = Astro.props as { page: Page };
         <Pagination page={page} />
     </div>
   </div>
-  <div class="bg-white text-center p-3">
-    <p class="blockquote mx-auto w-70 w-md-30 bg-light bg-opacity-45 mb-0">
-      Gracias por la oportunidad!
-    </p>
+  <div id="tecnologia" class="bg-dark bg-opacity-85">
+    <Brands path="/web/" format="png" gap="30" width="150" height="150" style="border border-light rounded-circle bg-white bg-opacity-85" />
   </div>
 </Cover>
 <script is:inline src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>

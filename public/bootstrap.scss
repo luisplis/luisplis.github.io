@@ -656,11 +656,10 @@ ul.list-chevron, ol.list-chevron {
             &:hover {  background-color: $dark; }
         }
         .branding {
-            margin: 0.5rem;
-            margin-left: 0;
-            margin-bottom: -1.5rem;
             padding-bottom: 13px;
-            background-image: url('/logo-white.svg'); width: 44px; height: 50px; background-size: cover;
+            background-image: url('/logo-white.svg'); 
+            width: 46px; height: 50px; 
+            background-size: cover;
             line-height: 0;
             color: $light;
             &:hover {
@@ -672,6 +671,13 @@ ul.list-chevron, ol.list-chevron {
                 font-size: 0.45rem;
                 padding: 0 0.2em;
                 text-shadow: 0em 0em 0.3em -0.15em $black;
+            }
+        }
+        @include media-breakpoint-down(lg) {
+            .branding {
+                margin: 0.4rem -1.2rem;
+                width: 36px; height: 38px; 
+                box-sizing: content-box;
             }
         }
         .navbar-toggler {

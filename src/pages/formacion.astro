@@ -1,261 +1,265 @@
 ---
 import Main from "@layouts/Main.astro";
 import Cover from "@components/Cover.astro";
+import Brands from "@components/Brands.astro";
 
 export const name = "Formación";
 export const term = "Formación Académica";
 export const desc = "Formación académica y títulos complementarios como diseñador, anialista, programador y gestor de proyectos web";
 export const menu = 3;
-export const snap = '/misc/lautaro-andreani-UYsBCu9RP3Y-unsplash.jpg';
+export const snap = '/misc/lautaro-andreani-UYsBCu9RP3Y.jpg';
 ---
 <Main class="main bg-primary bg-gradient bg-opacity-15" title={name+': '+term} description={desc}>
-	<Cover src="/background.svg">
-		<div class="container p-3">
-			<div class="row">
-				<div class="col-12 col-lg-4">
-					<div class="position-lg-sticky" style="top: 25px; z-index: 1020;">
-						<div class="text-center">
-							<h1 class="h2 text-black text-uppercase mt-2 mb-3">
-								{name}
-							</h1>
-						</div>
-						<ul id="history" class="list-group">
-							<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
-								<div class="title w-100">
-										<strong class="text-black">Desarrollo Web FRONTEND</strong>
-										<br/>
-										<small class="text-dark">Astro + React + Angular</small>
-								</div>
-								<div class="display">
-										<span class="badge bg-black text-white me-1 w-100">2024</span><br/>
-										<span class="badge bg-white text-primary w-100">3 CURSOS</span>
-								</div>
-								<a class="list-group-item-action align-self-center ps-2" href="#frontend" title="Director Técnico de MasWeb.ES - Tecnología en la Nube">
-									<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
-									<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
-								</a>
-							</li>
-							<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
-								<div class="title w-100">
-										<strong class="text-black">Formador de Formadores</strong>
-										<br/>
-										<small class="text-dark">& Formador Presencial</small>
-								</div>
-								<div class="display">
-										<span class="badge bg-black text-white me-1 w-100">2013</span><br/>
-										<span class="badge bg-white text-primary w-100">IFES</span>
-								</div>
-								<a class="list-group-item-action align-self-center ps-2" href="#profesor" title="Director Técnico de MasWeb.ES - Tecnología en la Nube">
-									<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
-									<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
-								</a>
-							</li>
-							<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
-								<div class="title w-100">
-										<strong class="text-black">Ingeniero Técnico</strong>
-										<br/>
-										<small class="text-dark">Informática de Gestión</small>
-								</div>
-								<div class="display">
-										<span class="badge bg-black text-white me-1 w-100">2010</span><br/>
-										<span class="badge bg-white text-primary w-100">UVA</span>
-								</div>
-								<a class="list-group-item-action align-self-center ps-2" href="#ingeniero" title="Profesor en Curso de Desarrollo Web para la academia IFES">
-									<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
-									<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
-								</a>
-							</li>
-							<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
-								<div class="title w-100">
-										<strong class="text-black">Técnico Superior</strong>
-										<br/>
-										<small class="text-dark">Desarrollo de Aplicaciones Informáticas</small>
-								</div>
-								<div class="display">
-										<span class="badge bg-black text-white me-1 w-100">2003</span><br/>
-										<span class="badge bg-white text-primary w-100">IES-MM</span>
-								</div>
-								<a class="list-group-item-action align-self-center ps-2" href="#tecnico" title="Desarrollador Web Freelance en OpenYourWeb del Grupo Almia">
-									<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
-									<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
-								</a>
-							</li>
-							<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
-								<div class="title w-100">
-										<strong class="text-black">Técnico en Desarrollo</strong>
-										<br/>
-										<small class="text-dark">Páginas Web y Redes Internet/Intranet</small>
-								</div>
-								<div class="display">
-										<span class="badge bg-black text-white me-1 w-100">2001</span><br/>
-										<span class="badge bg-white text-primary w-100">CEASE</span>
-								</div>
-								<a class="list-group-item-action align-self-center ps-2" href="#programador" title="Ingeniero Técnico de Informática de Gestión en la Nebrija">
-									<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
-									<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
-								</a>
-							</li>
-							<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
-								<div class="title w-100">
-										<strong class="text-black">Técnico en Sistemas</strong>
-										<small class="text-dark">Comunicación de Ordenadores y Redes Locales</small>
-								</div>
-								<div class="display">
-										<span class="badge bg-black text-white me-1 w-100">2000</span><br/>
-										<span class="badge bg-white text-primary w-100">CEASE</span>
-								</div>
-								<a class="list-group-item-action align-self-center ps-2" href="#comunicacion" title="Ingeniero Técnico de Informática de Gestión en la Nebrija">
-									<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
-									<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
-								</a>
-							</li>
-							<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
-								<div class="title w-100">
-										<strong class="text-black">Bachillerato Tecnológico</strong>
-								</div>
-								<div class="display">
-										<span class="badge bg-black text-white me-1 w-100">2000</span><br/>
-										<span class="badge bg-white text-primary w-100">IES-EG</span>
-								</div>
-								<a class="list-group-item-action align-self-center ps-2" href="#bachiller" title="Analista y programador de bases de datos en la Diputación de Segovia">
-									<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
-									<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
-								</a>
-							</li>
-						</ul>
+<Cover src="/background.svg">
+	<div class="container p-3">
+		<div class="row">
+			<div class="col-12 col-lg-4">
+				<div class="position-lg-sticky" style="top: 25px; z-index: 1020;">
+					<div class="text-center">
+						<h1 class="h2 text-black text-uppercase mt-2 mb-3">
+							{name}
+						</h1>
 					</div>
-				</div>
-				<div class="col-12 col-lg-8">
-					<section id="content" class="py-2" data-bs-spy="scroll" data-bs-target="#history" data-bs-smooth-scroll="true" tabindex="0">
-						<article id="frontend" class="article shadow rounded p-3 mb-3">
-							<div class="d-flex justify-content-between mb-2">
-								<h1 class="h2 text-black">
-									Desarrollador Web Frontend
-								</h1>
-								<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
-								<a class="link d-block d-md-none link" href="#history"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+					<ul id="history" class="list-group">
+						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
+							<div class="title w-100">
+									<strong class="text-black">Desarrollo Web FRONTEND</strong>
+									<br/>
+									<small class="text-dark">Astro + React + Angular</small>
 							</div>
-							<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
-									<span class="badge bg-primary">Cursos Privados</span>
-									<span class="title text-secondary">BEWSAM INVERSA SL</span>
+							<div class="display">
+									<span class="badge bg-black text-white me-1 w-100">2024</span><br/>
+									<span class="badge bg-white text-primary w-100">3 CURSOS</span>
 							</div>
-							<p class="lead">
-								Durante los últimos 2 años me he dedicado a formarme como diseñador y desarrollador web frontend:
-							</p>
-							<ul>
-								<li>Curso de Astro v-5</li>
-								<li>Curso de React v-18</li>
-								<li>Curso de Angular v-18</li>
-							</ul>
-							<p class="mb-3">
-									Cursos avanzados presenciales de programación frontend de <strong>180 horas lectivas</strong> y <strong>120 horas prácticas</strong>, además con la realización y entrega de <strong>proyecto final</strong> en cada curso.
-							</p>
-						</article>
-						<article id="profesor" class="article shadow rounded p-3 mb-3">
-							<div class="d-flex justify-content-between mb-2">
-								<h1 class="h2 text-black">
-									Cursos de Profesorado
-								</h1>
-								<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
-								<a class="link d-block d-md-none link" href="#history"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="list-group-item-action align-self-center ps-2" href="#frontend" title="Director Técnico de MasWeb.ES - Tecnología en la Nube">
+								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
+								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
+							</a>
+						</li>
+						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
+							<div class="title w-100">
+									<strong class="text-black">Formador de Formadores</strong>
+									<br/>
+									<small class="text-dark">& Formador Presencial</small>
 							</div>
-							<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
-									<span class="badge bg-primary">Cursos Privados</span>
-									<span class="title text-secondary">IFES - SEPE</span>
+							<div class="display">
+									<span class="badge bg-black text-white me-1 w-100">2013</span><br/>
+									<span class="badge bg-white text-primary w-100">IFES</span>
 							</div>
-							<ul>
-								<li>Formador de Formadores - 60 horas</li>
-								<li>Formador Presencial - 10 horas</li>
-							</ul>
-							<p class="mb-3">
-								Cursos realizados para desempeñarme como Profesor y tutor de certiﬁcado de profesionalidad en “Curso de confección y publicación de páginas web” -- IFCD0110 .
-							</p>
-						</article>
-						<article id="ingeniero" class="article shadow rounded p-3 mb-3">
-							<div class="d-flex justify-content-between mb-2">
-								<h1 class="h2 text-black">
-									Ingeniero Técnico en Informática de Gestión
-								</h1>
-								<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
-								<a class="link d-block d-md-none link" href="#history"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="list-group-item-action align-self-center ps-2" href="#profesor" title="Director Técnico de MasWeb.ES - Tecnología en la Nube">
+								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
+								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
+							</a>
+						</li>
+						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
+							<div class="title w-100">
+									<strong class="text-black">Ingeniero Técnico</strong>
+									<br/>
+									<small class="text-dark">Informática de Gestión</small>
 							</div>
-							<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
-									<span class="badge bg-primary">Diplomatura</span>
-									<span class="title text-secondary">Universidad de Valladolid</span>
+							<div class="display">
+									<span class="badge bg-black text-white me-1 w-100">2010</span><br/>
+									<span class="badge bg-white text-primary w-100">UVA</span>
 							</div>
-							<p class="lead">
-								Cursé Ingeniería Técnica en Informática de Gestión en la Universidad de Valladolid, Campus de Segovia.
-							</p>
-						</article>
-						<article id="tecnico" class="article shadow rounded p-3 mb-3">
-							<div class="d-flex justify-content-between mb-2">
-								<h1 class="h2 text-black">
-									Técnico Superior de Desarrollo de Aplicaciones
-								</h1>
-								<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
-								<a class="link d-block d-md-none link" href="#history"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="list-group-item-action align-self-center ps-2" href="#ingeniero" title="Profesor en Curso de Desarrollo Web para la academia IFES">
+								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
+								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
+							</a>
+						</li>
+						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
+							<div class="title w-100">
+									<strong class="text-black">Técnico Superior</strong>
+									<br/>
+									<small class="text-dark">Desarrollo de Aplicaciones Informáticas</small>
 							</div>
-							<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
-									<span class="badge bg-primary">Técnico Superior</span>
-									<span class="title text-secondary">IES María Moliner</span>
+							<div class="display">
+									<span class="badge bg-black text-white me-1 w-100">2003</span><br/>
+									<span class="badge bg-white text-primary w-100">IES-MM</span>
 							</div>
-							<p class="lead">
-								<strong>Técnico en Desarrollo de Aplicaciones Informáticas</strong>, ciclo formativo de grado superior y prácticas como analista y programdor de bases de datos en la <strong>Diputación Provincial de Segovia</strong>.
-							</p>
-						</article>
-						<article id="programador" class="article shadow rounded p-3 mb-3">
-							<div class="d-flex justify-content-between mb-2">
-								<h1 class="h2 text-black">
-									Programador de Aplicaciones de Redes Internet/Intranet
-								</h1>
-								<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
-								<a class="link d-block d-md-none link" href="#history"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="list-group-item-action align-self-center ps-2" href="#tecnico" title="Desarrollador Web Freelance en OpenYourWeb del Grupo Almia">
+								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
+								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
+							</a>
+						</li>
+						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
+							<div class="title w-100">
+									<strong class="text-black">Técnico en Desarrollo</strong>
+									<br/>
+									<small class="text-dark">Páginas Web y Redes Internet/Intranet</small>
 							</div>
-							<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
-									<span class="badge bg-primary">Curso UE</span>
-									<span class="title text-secondary">Academia CEASE</span>
+							<div class="display">
+									<span class="badge bg-black text-white me-1 w-100">2001</span><br/>
+									<span class="badge bg-white text-primary w-100">CEASE</span>
 							</div>
-							<p>
-								Programador de Aplicaciones de Redes Internet/Intranet: curso homologado de 350 horas para gestión de redes y programación en Java++ acreditado por la Unión Europea.
-							</p>
-						</article>
-						<article id="comunicacion" class="article shadow rounded p-3 mb-3">
-							<div class="d-flex justify-content-between mb-2">
-								<h1 class="h2 text-black">
-									Comunicación de Ordenadores y Redes Locales
-								</h1>
-								<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
-								<a class="link d-block d-md-none link" href="#history"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="list-group-item-action align-self-center ps-2" href="#programador" title="Ingeniero Técnico de Informática de Gestión en la Nebrija">
+								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
+								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
+							</a>
+						</li>
+						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
+							<div class="title w-100">
+									<strong class="text-black">Técnico en Sistemas</strong>
+									<small class="text-dark">Comunicación de Ordenadores y Redes Locales</small>
 							</div>
-							<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
-									<span class="badge bg-primary">Curso Junta CyL</span>
-									<span class="title text-secondary">Academia CEASE</span>
+							<div class="display">
+									<span class="badge bg-black text-white me-1 w-100">2000</span><br/>
+									<span class="badge bg-white text-primary w-100">CEASE</span>
 							</div>
-							<p>
-								Comunicación de Ordenadores y Redes Locales: curso homologado de 350 horas para gestión de sistemas y arquitecturas de red - Junta de Castilla y León.
-							</p>
-						</article>
-						<article id="bachiller" class="article shadow rounded p-3 mb-3">
-							<div class="d-flex justify-content-between mb-2">
-								<h1 class="h2 text-black">
-									Bachillerato Tecnológico
-								</h1>
-								<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
-								<a class="link d-block d-md-none link" href="#history"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="list-group-item-action align-self-center ps-2" href="#comunicacion" title="Ingeniero Técnico de Informática de Gestión en la Nebrija">
+								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
+								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
+							</a>
+						</li>
+						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
+							<div class="title w-100">
+									<strong class="text-black">Bachillerato Tecnológico</strong>
 							</div>
-							<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
-									<span class="badge bg-primary">Titulación</span>
-									<span class="title text-secondary">IES Ezequiel González</span>
+							<div class="display">
+									<span class="badge bg-black text-white me-1 w-100">2000</span><br/>
+									<span class="badge bg-white text-primary w-100">IES-EG</span>
 							</div>
-							<p>
-								Realicé mi Bachillerato de Tecnología según LOGSE con optativa de Informática en Segovia.
-							</p>
-						</article>
-					</section>
+							<a class="list-group-item-action align-self-center ps-2" href="#bachiller" title="Analista y programador de bases de datos en la Diputación de Segovia">
+								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
+								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
+							</a>
+						</li>
+					</ul>
 				</div>
 			</div>
+			<div class="col-12 col-lg-8">
+				<section id="content" class="py-2" data-bs-spy="scroll" data-bs-target="#history" data-bs-smooth-scroll="true" tabindex="0">
+					<article id="frontend" class="article shadow rounded p-3 mb-3">
+						<div class="d-flex justify-content-between mb-2">
+							<h1 class="h2 text-black">
+								Desarrollador Web Frontend
+							</h1>
+							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="link d-block d-md-none link" href="#history"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+						</div>
+						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
+								<span class="badge bg-primary">Cursos Privados</span>
+								<span class="title text-secondary">BEWSAM INVERSA SL</span>
+						</div>
+						<p class="lead">
+							Durante los últimos 2 años me he dedicado a formarme como diseñador y desarrollador web frontend:
+						</p>
+						<ul>
+							<li>Curso de Astro v-5</li>
+							<li>Curso de React v-18</li>
+							<li>Curso de Angular v-18</li>
+						</ul>
+						<p class="mb-3">
+								Cursos avanzados presenciales de programación frontend de <strong>180 horas lectivas</strong> y <strong>120 horas prácticas</strong>, además con la realización y entrega de <strong>proyecto final</strong> en cada curso.
+						</p>
+					</article>
+					<article id="profesor" class="article shadow rounded p-3 mb-3">
+						<div class="d-flex justify-content-between mb-2">
+							<h1 class="h2 text-black">
+								Cursos de Profesorado
+							</h1>
+							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="link d-block d-md-none link" href="#history"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+						</div>
+						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
+								<span class="badge bg-primary">Cursos Privados</span>
+								<span class="title text-secondary">IFES - SEPE</span>
+						</div>
+						<ul>
+							<li>Formador de Formadores - 60 horas</li>
+							<li>Formador Presencial - 10 horas</li>
+						</ul>
+						<p class="mb-3">
+							Cursos realizados para desempeñarme como Profesor y tutor de certiﬁcado de profesionalidad en “Curso de confección y publicación de páginas web” -- IFCD0110 .
+						</p>
+					</article>
+					<article id="ingeniero" class="article shadow rounded p-3 mb-3">
+						<div class="d-flex justify-content-between mb-2">
+							<h1 class="h2 text-black">
+								Ingeniero Técnico en Informática de Gestión
+							</h1>
+							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="link d-block d-md-none link" href="#history"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+						</div>
+						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
+								<span class="badge bg-primary">Diplomatura</span>
+								<span class="title text-secondary">Universidad de Valladolid</span>
+						</div>
+						<p class="lead">
+							Cursé Ingeniería Técnica en Informática de Gestión en la Universidad de Valladolid, Campus de Segovia.
+						</p>
+					</article>
+					<article id="tecnico" class="article shadow rounded p-3 mb-3">
+						<div class="d-flex justify-content-between mb-2">
+							<h1 class="h2 text-black">
+								Técnico Superior de Desarrollo de Aplicaciones
+							</h1>
+							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="link d-block d-md-none link" href="#history"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+						</div>
+						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
+								<span class="badge bg-primary">Técnico Superior</span>
+								<span class="title text-secondary">IES María Moliner</span>
+						</div>
+						<p class="lead">
+							<strong>Técnico en Desarrollo de Aplicaciones Informáticas</strong>, ciclo formativo de grado superior y prácticas como analista y programdor de bases de datos en la <strong>Diputación Provincial de Segovia</strong>.
+						</p>
+					</article>
+					<article id="programador" class="article shadow rounded p-3 mb-3">
+						<div class="d-flex justify-content-between mb-2">
+							<h1 class="h2 text-black">
+								Programador de Aplicaciones de Redes Internet/Intranet
+							</h1>
+							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="link d-block d-md-none link" href="#history"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+						</div>
+						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
+								<span class="badge bg-primary">Curso UE</span>
+								<span class="title text-secondary">Academia CEASE</span>
+						</div>
+						<p>
+							Programador de Aplicaciones de Redes Internet/Intranet: curso homologado de 350 horas para gestión de redes y programación en Java++ acreditado por la Unión Europea.
+						</p>
+					</article>
+					<article id="comunicacion" class="article shadow rounded p-3 mb-3">
+						<div class="d-flex justify-content-between mb-2">
+							<h1 class="h2 text-black">
+								Comunicación de Ordenadores y Redes Locales
+							</h1>
+							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="link d-block d-md-none link" href="#history"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+						</div>
+						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
+								<span class="badge bg-primary">Curso Junta CyL</span>
+								<span class="title text-secondary">Academia CEASE</span>
+						</div>
+						<p>
+							Comunicación de Ordenadores y Redes Locales: curso homologado de 350 horas para gestión de sistemas y arquitecturas de red - Junta de Castilla y León.
+						</p>
+					</article>
+					<article id="bachiller" class="article shadow rounded p-3 mb-3">
+						<div class="d-flex justify-content-between mb-2">
+							<h1 class="h2 text-black">
+								Bachillerato Tecnológico
+							</h1>
+							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="link d-block d-md-none link" href="#history"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+						</div>
+						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
+								<span class="badge bg-primary">Titulación</span>
+								<span class="title text-secondary">IES Ezequiel González</span>
+						</div>
+						<p>
+							Realicé mi Bachillerato de Tecnología según LOGSE con optativa de Informática en Segovia.
+						</p>
+					</article>
+				</section>
+			</div>
 		</div>
-	</Cover>
+	</div>
+	<div id="tecnologia" class="bg-dark bg-opacity-85">
+		<Brands path="/web/" format="png" gap="30" width="150" height="150" style="border border-light rounded-circle bg-white bg-opacity-85" />
+	</div>
+</Cover>
 </Main>
 <script>
 	/**

@@ -74,7 +74,6 @@ const { page } = Astro.props as any;
 
 ---
 <Main class="main bg-primary bg-opacity-15" title={name+' - '+page.currentPage+': '+term} description={page.currentPage}>
-<div class="bg-transparent">
 <Cover src="/background.svg">
   <div class="container p-3">
     <div class="row mb-3">
@@ -139,8 +138,6 @@ const { page } = Astro.props as any;
       </div>
     </div>
   </div>
-</Cover>
-</div>
   <div class="text-centers bg-white bg-opacity-50">
     { page.end == 1 &&
       <div class="py-3 bg-white">
@@ -151,19 +148,9 @@ const { page } = Astro.props as any;
       <Pagination page={page} />
     }
   </div>
-  <div class="d-flex flex-row g-4 justify-content-around align-items-end bg-white p-3">
-    <div class="align-seft-center">
-      <Image class="img-fluid mx-3" src="/favicon.svg"/>
-    </div>
-    <div class="mx-3">
-      <p class="mb-0"><strong>Luis Martín</strong></p>
-    </div>
-    <div class="">
-      <p class="lead mb-0 w-75">
-        Aquí dejo constancia de mis inquietudes e intereses como desarrollador web, aporto un pequeño
-        leagado de notas y artículos que quiero conservar y tener en cuenta a nivel personal y profesional.
-      </p>
-    </div>
+  <div id="tecnologia" class="bg-dark bg-opacity-85">
+    <Brands path="/web/" format="png" gap="30" width="150" height="150" style="border border-light rounded-circle bg-white bg-opacity-85" />
   </div>
+</Cover>
 <script is:inline src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 </Main>

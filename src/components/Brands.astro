@@ -125,10 +125,10 @@ const bgColor = 'var(--bs-'+color+')';
         animation-play-state: var(--slideHover);
     }
     .brand-slide {
-        margin: 30px;
-        padding: var(--slideGap);
-        height: calc(var(--slideHeight) + var(--slideGap) + var(--slideGap));
-        width: calc(var(--slideWidth) + var(--slideGap) + var(--slideGap));
+        margin: var(--slideGap) calc(var(--slideGap)/2);
+        padding: calc(var(--slideGap)/2);
+        height: var(--slideHeight) + calc(var(--slideGap)/2);
+        width: calc(var(--slideWidth) + var(--slideGap));
     }
 }
 </style>
