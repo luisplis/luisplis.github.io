@@ -1,6 +1,8 @@
 ---
 import { Image as AstroImage } from 'astro:assets';
 import { slugify } from '@components/Tag.astro';
+import { undefined } from 'astro:schema';
+import { getImage } from 'astro:assets';
 
 export type AssetImage = { 
     src: string, 
@@ -12,16 +14,19 @@ export type AssetImage = {
 let attrs: any = Astro.props;
 
 export function source(path: string = ''): string{
-    const base = '/src/assets';
+
+    let base = '';
 
     if (!path.startsWith('http') && !path.startsWith('//'))
     {
+
+        base = '/src/assets';
         path = path.replace(base, '');
         path = (path.startsWith('@'))? path.replace('@', '/src/'): base+path;
         path = decodeURI(path);
     }
 
-    return (path == base)? '': path;
+    return (path == base)? '': path.replace('//', '/');
 };
 
 export function object(path: string = '', format: string = ''): AssetImage|string /* | string */ {
@@ -62,6 +67,16 @@ if (typeof attrs.src === 'string' || attrs.src instanceof String)
 {
     path = source(attrs.src);
     snap = object(path, attrs.format);
+
+    if (path && snap == undefined)
+    {
+        path = path.replace('/src/assets', '');
+
+        if (path === attrs.src)
+        {
+            snap = path; // is public path
+        }
+    }
 
     if (!('class' in attrs)) attrs.class = 'img-fluid';
 }
