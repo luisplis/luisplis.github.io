@@ -3,9 +3,12 @@
     {
         "format": "compressed", 
         "extensionName": "-min.css", 
-        //"savePath": "/src/css", 
+        "savePath": "/public/css", 
     }
     ],
     "liveSassCompile.settings.generateMap": false, 
-    "liveSassCompile.settings.watchOnLaunch": true
+    "liveSassCompile.settings.watchOnLaunch": true,
+    "liveSassCompile.settings.autoprefix": [
+
+    ]
 }

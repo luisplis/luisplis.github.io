@@ -30,8 +30,8 @@ if (frontmatter) {
 		<link rel="canonical" href={canonical}/>
 		<SeoOg title={title} url={canonical} description={description} snap={snap} alt={title}/>
 		<link rel="icon" type="image/svg+xml" href={conf.base+'/'+image(conf.favicon)} />
-		<link href={conf.base+'/bootstrap-min.css'} rel="stylesheet"/>
-		<link href={conf.base+'/cookies-min.css'} rel="stylesheet"/>
+		<link href={conf.base+'/css/main-min.css'} rel="stylesheet"/>
+		<link href={conf.base+'/css/cookies-min.css'} rel="stylesheet"/>
 		<ClientRouter/>
 	</head>
 	<body>
@@ -40,8 +40,23 @@ if (frontmatter) {
 			<slot/>
 		</main>
 		<Footer/>
-		<script src="@node/bootstrap/dist/js/bootstrap.bundle.min.js"/>
-		<script src={conf.base+'/cookies.js'} data-astro-rerun is:inline/>
+		
+		<script>
+			import * as bootstrap from "bootstrap"; // Bottstrap Init!
+			/*
+			function initTooltips() {
+				const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+				tooltipTriggerList.forEach(tooltipTriggerEl => {
+					const existingTooltip = bootstrap.Tooltip.getInstance(tooltipTriggerEl);
+					if (existingTooltip) existingTooltip.dispose();
+					new bootstrap.Tooltip(tooltipTriggerEl);
+				});
+			}
+			document.addEventListener('DOMContentLoaded', initTooltips);
+			document.addEventListener('astro:page-load', initTooltips);
+			*/
+		</script>
+		<script src={conf.base+'/js/cookies.js'} data-astro-rerun is:inline/>
 		<Analytics ua={conf.ua_code}/>
 	</body>
 </html>
