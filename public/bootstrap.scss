@@ -260,6 +260,21 @@ $utilities: map-merge(
     )
 );
 
+/*
+** Responsive PositionFixed: "position-lg-fixed" ++ @bootstrap-extended
+*/
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    .position#{$infix}-fixed {
+      position: fixed !important;
+    }
+    .position#{$infix}-sticky{
+      position: sticky !important;
+    }
+  }
+}
+
 // Dark mode
 $custom-colors-text-dark: ("custom-color": #e1d2f2);
 $custom-colors-bg-subtle-dark: ("custom-color": #8951fa);

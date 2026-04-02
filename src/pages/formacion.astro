@@ -11,7 +11,7 @@ export const snap = '/misc/lautaro-andreani-UYsBCu9RP3Y.jpg';
 ---
 <Main class="main bg-primary bg-gradient bg-opacity-15" title={name+': '+term} description={desc}>
 <Cover src="/background.svg">
-	<div class="container pe-0 ps-0">
+	<div class="container px-md-0">
 		<div class="row">
 			<div class="col-12 col-lg-4">
 				<div class="position-lg-sticky" style="top: 25px; z-index: 1020;">
@@ -297,7 +297,7 @@ export const snap = '/misc/lautaro-andreani-UYsBCu9RP3Y.jpg';
 			document.getElementById(id).classList.add('actived');
 	}
 
-	import bootstrap from '@node/bootstrap/dist/js/bootstrap'; /* build */
+	import * as bootstrap from "bootstrap"; // Bottstrap Init!
 
 	document.addEventListener('DOMContentLoaded', (event) => {
 		var rel = document.getElementById('content');

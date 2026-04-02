@@ -5,7 +5,6 @@ import SeoOg from "@layouts/main/SeoOg.astro";
 import Analytics from "@components/Analytics.astro";
 import { ClientRouter } from 'astro:transitions'; /* ViewTransitions Mode */
 import { image } from '@components/Image.astro';
-import '@node/bootstrap-icons/font/bootstrap-icons.css';
 import conf from '@conf.ts';
 
 let { title = conf.name+' - '+conf.term, description = conf.desc, class: className = 'main container', snap= conf.image, canonical = new URL(Astro.url.pathname, conf.site + conf.base), frontmatter = null } = Astro.props;
@@ -40,7 +39,6 @@ if (frontmatter) {
 			<slot/>
 		</main>
 		<Footer/>
-		
 		<script>
 			import * as bootstrap from "bootstrap"; // Bottstrap Init!
 			/*
