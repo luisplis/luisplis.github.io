@@ -281,6 +281,97 @@
     }
 }
 
+/*
+** GENERICS
+*/
+
+.beta { outline: 2px dotted shade-color($secondary, 15%); background-color: tint-color($primary, 85%); }
+
+/* BLOCKS */
+blockquote, .blockquote {
+    font-size: 1em;
+    line-height: 1.45em;
+    font-family: $font-text;
+    position: relative;
+    padding: 0.7em 1em 0.7em 1em;
+    color: $black;
+    border: 1px solid $white;
+    background-color: tint-color($light, 20%);
+    box-shadow: 0 0 13px -5px rgba(0, 0, 0, 0.5);
+    border-radius: 0.33em;
+    box-shadow: none;
+    &:before {
+        font-family: $font-display;
+        color: shade-color($light, 20%);
+        position: absolute;
+        height: 100%;
+        font-size: 3em;
+        line-height: 0;
+        top: 0.3em;
+        left: -0.15em;
+        content: "\201C";
+    }
+    &:after {
+        font-family: $font-display;
+        color: shade-color($light, 20%);
+        position: absolute;
+        height: 100%;
+        font-size: 3em;
+        float: right;
+        line-height: 0;
+        right: -0.15em;
+        top: calc(100% + 0.15em);
+        content: "\201D";
+    }
+    >cite:before {
+        content: "\2013";
+    }
+}
+.blockquote {
+    color: $black;
+    border: 1px solid rgba($primary, 0.44);
+    &:before, &:after { color: rgba($primary, 0.88); }
+}
+
+/* LISTS */
+
+ul.list-alt, ol.list-alt {
+    list-style: none outside;
+    li {
+        position: relative;
+        line-height: 1.5em;
+        &:before /* @customize-it */
+        {
+            position: absolute; top: 0; left: -1.5em;
+            font-family: $font-icon; font-size: 1em;
+            content: "\f26b";
+        }
+        &:not(:last-child) {
+            padding-bottom: 0;
+        }
+    }
+}
+ul.list-chevron, ol.list-chevron {
+    list-style: none outside;
+    padding-left: 1rem;
+    margin-bottom: 0px;
+    > li {
+        position: relative;
+        line-height: 1.5em;
+        margin-bottom: .5em;
+        &:before /* @customize-it */
+        {
+            position: absolute; top: -2px; left: -1.2em;
+            font-family: $font-icon; font-size: 1em;
+            content: "\F285";
+        }
+        &:not(:last-child) {
+            padding-bottom: 0;
+        }
+    }
+}
+
+/* CARDS */
 .card.card-body {
     transition: all 0.3s ease-in-out;
     .card-title {

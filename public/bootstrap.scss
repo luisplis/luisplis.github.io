@@ -354,8 +354,8 @@ h1, .h1, h3, .h3 { font-family: $font-display; font-weight: $font-weight-bolder;
 }
 .icon-link { align-items: stretch; }
 
-.beta { outline: 2px dotted shade-color($secondary, 15%); background-color: tint-color($primary, 85%); }
-.lead   { font-family: $font-title; font-size: 1.15rem; line-height: 1.45em; }
+.lead   { font-family: $font-title; font-size: 1.15rem; line-height: 1.45em; font-weight: normal; }
+.lead strong { color: black; }
 .text-condensed { letter-spacing: 0.05em; }
 .text-spaced    { letter-spacing: 0.1em; }
 .text-balance   { text-wrap: balance; }
@@ -380,58 +380,12 @@ p, blockquote, ol li, ul li, h1, h2, h3, h4, h5, .badge {
     }
 }
 
-blockquote, .blockquote {
-    font-size: 1em;
-    line-height: 1.45em;
-    font-family: $font-text;
-    position: relative;
-    padding: 0.7em 1em 0.7em 1em;
-    color: $black;
-    border: 1px solid $white;
-    background-color: tint-color($light, 20%);
-    box-shadow: 0 0 13px -5px rgba(0, 0, 0, 0.5);
-    border-radius: 0.33em;
-    box-shadow: none;
-    &:before {
-        font-family: $font-display;
-        color: shade-color($light, 20%);
-        position: absolute;
-        height: 100%;
-        font-size: 3em;
-        line-height: 0;
-        top: 0.3em;
-        left: -0.15em;
-        content: "\201C";
-    }
-    &:after {
-        font-family: $font-display;
-        color: shade-color($light, 20%);
-        position: absolute;
-        height: 100%;
-        font-size: 3em;
-        float: right;
-        line-height: 0;
-        right: -0.15em;
-        top: calc(100% + 0.15em);
-        content: "\201D";
-    }
-    >cite:before {
-        content: "\2013";
-    }
-}
-.blockquote {
-    color: $black;
-    border: 1px solid rgba($primary, 0.44);
-    &:before, &:after { color: rgba($primary, 0.88); }
-}
-
 /* Listas */
 .list-group {
     .list-group-item {
         background-color: transparent;
     }
 }
-
 ul.list, ol.list {
     li {
         line-height: 1.3em;
@@ -439,42 +393,6 @@ ul.list, ol.list {
     }
 }
 ul.list { list-style: disc outside; }
-
-ul.list-alt, ol.list-alt {
-    list-style: none outside;
-    li {
-        position: relative;
-        line-height: 1.5em;
-        &:before /* @customize-it */
-        {
-            position: absolute; top: 0; left: -1.5em;
-            font-family: $font-icon; font-size: 1em;
-            content: "\f26b";
-        }
-        &:not(:last-child) {
-            padding-bottom: 0;
-        }
-    }
-}
-ul.list-chevron, ol.list-chevron {
-    list-style: none outside;
-    padding-left: 1rem;
-    margin-bottom: 0px;
-    > li {
-        position: relative;
-        line-height: 1.5em;
-        margin-bottom: .5em;
-        &:before /* @customize-it */
-        {
-            position: absolute; top: -2px; left: -1.2em;
-            font-family: $font-icon; font-size: 1em;
-            content: "\F285";
-        }
-        &:not(:last-child) {
-            padding-bottom: 0;
-        }
-    }
-}
 
 /* Efecto sonar */
 .sonar {
@@ -495,48 +413,4 @@ ul.list-chevron, ol.list-chevron {
       .it, img { width: 100%; }
     }
   }
-}
-
-/*
-** PositionFixed responsive: "position-lg-fixed" ++ @bootstrap-extended
-*/
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-    .position#{$infix}-fixed {
-      position: fixed !important;
-    }
-    .position#{$infix}-sticky{
-      position: sticky !important;
-    }
-  }
-}
-/*
-** Overlay responsive: "overlay overlay-md-top" ++ @bootstrap-extended 
-*/
-@each $breakpoint in map-keys($grid-breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-        .overlay#{$infix} {
-            position: absolute !important;
-            width: 100%; height: auto;
-            top: 50% !important; left: 50% !important;
-            transform: translate(-50%, -50%) !important;
-            transform-style: preserve-3d;
-        }
-        .overlay#{$infix}-top {
-            position: absolute !important;
-            width: 100% ; height: auto;
-            top: 0% !important; bottom: auto !important; left: 50% !important;
-            transform: translate(-50%,-0%) !important;
-            transform-style: preserve-3d;
-        }
-        .overlay#{$infix}-bottom {
-            position: absolute !important;
-            width: 100%; height: auto;
-            bottom: 0% !important; top: auto !important; left: 50% !important;
-            transform: translate(-50%,0%) !important;
-            transform-style: preserve-3d;
-        }
-    }
 }
