@@ -6,14 +6,14 @@ import Brands from "@components/Brands.astro";
 export const name = "Formación";
 export const term = "Formación Académica";
 export const desc = "Formación académica y títulos complementarios como diseñador, anialista, programador y gestor de proyectos web";
-export const menu = 3;
+export const menu = 2;
 export const snap = '/misc/lautaro-andreani-UYsBCu9RP3Y.jpg';
 ---
 <Main class="main bg-primary bg-gradient bg-opacity-15" title={name+': '+term} description={desc}>
 <Cover src="/background.svg">
 	<div class="container px-md-0">
 		<div class="row">
-			<div class="col-12 col-lg-4">
+			<div class="col-12 col-lg-5">
 				<div class="position-lg-sticky" style="top: 25px; z-index: 1020;">
 					<div class="text-center">
 						<h1 class="h2 text-black text-uppercase mt-2 mb-3">
@@ -23,102 +23,120 @@ export const snap = '/misc/lautaro-andreani-UYsBCu9RP3Y.jpg';
 					<ul id="history" class="list-group">
 						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
 							<div class="title w-100">
-									<strong class="text-black">Desarrollo Web FRONTEND</strong>
+									<strong class="text-black">Desarrollador Web FullStack en JavaScript</strong>
 									<br/>
-									<small class="text-dark">Astro + React + Angular</small>
+									<small class="text-dark">Certificado Profesional de IBM</small>
+							</div>
+							<div class="display">
+									<span class="badge bg-black text-white me-1 w-100">2026</span><br/>
+									<span class="badge bg-white text-primary w-100">4 meses</span>
+							</div>
+							<a class="list-group-item-action align-self-center ps-2" href="#fullstack" title="Director Técnico de MasWeb.ES - Tecnología en la Nube">
+								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
+								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
+							</a>
+						</li>
+						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
+							<div class="title w-100">
+									<strong class="text-black">Curso Avanzado de React v-18</strong>
+									<br/>
+									<small class="text-dark">Certificado de Empresa</small>
 							</div>
 							<div class="display">
 									<span class="badge bg-black text-white me-1 w-100">2024</span><br/>
-									<span class="badge bg-white text-primary w-100">3 CURSOS</span>
+									<span class="badge bg-white text-primary w-100">3 meses</span>
 							</div>
-							<a class="list-group-item-action align-self-center ps-2" href="#frontend" title="Director Técnico de MasWeb.ES - Tecnología en la Nube">
+							<a class="list-group-item-action align-self-center ps-2" href="#react" title="Curso Avanzado de React">
 								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
 								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
 							</a>
 						</li>
 						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
 							<div class="title w-100">
-									<strong class="text-black">Formador de Formadores</strong>
+									<strong class="text-black">Curso Avanzado de Angular v-18</strong>
 									<br/>
-									<small class="text-dark">& Formador Presencial</small>
+									<small class="text-dark">Certificado de Empresa</small>
+							</div>
+							<div class="display">
+									<span class="badge bg-black text-white me-1 w-100">2024</span><br/>
+									<span class="badge bg-white text-primary w-100">3 meses</span>
+							</div>
+							<a class="list-group-item-action align-self-center ps-2" href="#angular" title="Curso Avanzado de Angular">
+								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
+								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
+							</a>
+						</li>
+						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
+							<div class="title w-100">
+									<strong class="text-black">Curso Completo de Astro v-5</strong>
+									<br/>
+									<small class="text-dark">Certificado de Empresa</small>
+							</div>
+							<div class="display">
+									<span class="badge bg-black text-white me-1 w-100">2023</span><br/>
+									<span class="badge bg-white text-primary w-100">3 meses</span>
+							</div>
+							<a class="list-group-item-action align-self-center ps-2" href="#astro" title="Curso Avanzado de Astro">
+								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
+								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
+							</a>
+						</li>
+						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
+							<div class="title w-100">
+									<strong class="text-black">Formador de Formadores y Presencial</strong>
+									<br/>
+									<small class="text-dark">Cursos al Profesorado</small>
 							</div>
 							<div class="display">
 									<span class="badge bg-black text-white me-1 w-100">2013</span><br/>
-									<span class="badge bg-white text-primary w-100">IFES</span>
+									<span class="badge bg-white text-primary w-100">2 Cursos</span>
 							</div>
-							<a class="list-group-item-action align-self-center ps-2" href="#profesor" title="Director Técnico de MasWeb.ES - Tecnología en la Nube">
+							<a class="list-group-item-action align-self-center ps-2" href="#profesor" title="Profesor en Curso de Desarrollo Web para la academia IFES">
 								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
 								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
 							</a>
 						</li>
 						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
 							<div class="title w-100">
-									<strong class="text-black">Ingeniero Técnico</strong>
+									<strong class="text-black">Ingeniero Técnico en Informática de Gestión</strong>
 									<br/>
-									<small class="text-dark">Informática de Gestión</small>
+									<small class="text-dark">Universidad de Valladolid</small>
 							</div>
 							<div class="display">
-									<span class="badge bg-black text-white me-1 w-100">2010</span><br/>
+									<span class="badge bg-black text-white me-1 w-100 px-2">2010</span><br/>
 									<span class="badge bg-white text-primary w-100">UVA</span>
 							</div>
-							<a class="list-group-item-action align-self-center ps-2" href="#ingeniero" title="Profesor en Curso de Desarrollo Web para la academia IFES">
+							<a class="list-group-item-action align-self-center ps-2" href="#ingeniero" title="Ingeniero Técnico de Informática de Gestión por la UVA">
 								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
 								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
 							</a>
 						</li>
 						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
 							<div class="title w-100">
-									<strong class="text-black">Técnico Superior</strong>
+									<strong class="text-black">Oposición Programador Informático</strong>
 									<br/>
-									<small class="text-dark">Desarrollo de Aplicaciones Informáticas</small>
+									<small class="text-dark">Certificado Pruebas Selectivas Superadas</small>
 							</div>
 							<div class="display">
-									<span class="badge bg-black text-white me-1 w-100">2003</span><br/>
-									<span class="badge bg-white text-primary w-100">IES-MM</span>
+									<span class="badge bg-black text-white me-1 w-100 px-2">2003</span><br/>
+									<span class="badge bg-white text-primary w-100">AYTO</span>
 							</div>
-							<a class="list-group-item-action align-self-center ps-2" href="#tecnico" title="Desarrollador Web Freelance en OpenYourWeb del Grupo Almia">
+							<a class="list-group-item-action align-self-center ps-2" href="#programador" title="Programador Informático por el Ayuntamiento de Segovia">
 								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
 								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
 							</a>
 						</li>
 						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
 							<div class="title w-100">
-									<strong class="text-black">Técnico en Desarrollo</strong>
+									<strong class="text-black">Técnico Superior en Desarrollo de Aplicaciones</strong>
 									<br/>
-									<small class="text-dark">Páginas Web y Redes Internet/Intranet</small>
+									<small class="text-dark">Ciclo Formativo de Grado Superior</small>
 							</div>
 							<div class="display">
-									<span class="badge bg-black text-white me-1 w-100">2001</span><br/>
-									<span class="badge bg-white text-primary w-100">CEASE</span>
+									<span class="badge bg-black text-white me-1 w-100 px-2">2003</span><br/>
+									<span class="badge bg-white text-primary w-100">FP2</span>
 							</div>
-							<a class="list-group-item-action align-self-center ps-2" href="#programador" title="Ingeniero Técnico de Informática de Gestión en la Nebrija">
-								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
-								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
-							</a>
-						</li>
-						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
-							<div class="title w-100">
-									<strong class="text-black">Técnico en Sistemas</strong>
-									<small class="text-dark">Comunicación de Ordenadores y Redes Locales</small>
-							</div>
-							<div class="display">
-									<span class="badge bg-black text-white me-1 w-100">2000</span><br/>
-									<span class="badge bg-white text-primary w-100">CEASE</span>
-							</div>
-							<a class="list-group-item-action align-self-center ps-2" href="#comunicacion" title="Ingeniero Técnico de Informática de Gestión en la Nebrija">
-								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
-								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
-							</a>
-						</li>
-						<li class="list-group-item d-flex flex-row justify-content-between align-items-start">
-							<div class="title w-100">
-									<strong class="text-black">Bachillerato Tecnológico</strong>
-							</div>
-							<div class="display">
-									<span class="badge bg-black text-white me-1 w-100">2000</span><br/>
-									<span class="badge bg-white text-primary w-100">IES-EG</span>
-							</div>
-							<a class="list-group-item-action align-self-center ps-2" href="#bachiller" title="Analista y programador de bases de datos en la Diputación de Segovia">
+							<a class="list-group-item-action align-self-center ps-2" href="#tecnico" title="Técnico Superior en Informática de Gestión">
 								<span class="bi bi-arrow-down-circle-fill d-inline d-md-none fs-3"></span>
 								<span class="bi bi-arrow-right-circle-fill d-none d-md-inline fs-3"></span>
 							</a>
@@ -126,57 +144,134 @@ export const snap = '/misc/lautaro-andreani-UYsBCu9RP3Y.jpg';
 					</ul>
 				</div>
 			</div>
-			<div class="col-12 col-lg-8">
+			<div class="col-12 col-lg-7">
 				<section id="content" class="py-2" data-bs-spy="scroll" data-bs-target="#history" data-bs-smooth-scroll="true" tabindex="0">
-					<article id="frontend" class="article shadow rounded p-3 mb-3">
+					<article id="fullstack" class="article shadow rounded p-3 mb-3">
 						<div class="d-flex justify-content-between mb-2">
 							<h1 class="h2 text-black">
-								Desarrollador Web Frontend
+								Desarrollador Web FullStack en JavaScript
 							</h1>
 							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
 							<a class="link d-block d-md-none link" href="#history" title="navegar al índice"><span class="bi bi-arrow-up-circle fs-3"></span></a>
 						</div>
 						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
-								<span class="badge bg-primary">Cursos Privados</span>
-								<span class="title text-secondary">BEWSAM INVERSA SL</span>
+							<span class="display text-primary">Certificado Profesional</span>
+							<strong class="badge bg-light text-dark ms-2 me-auto">4 meses</strong>
+							<span class="title text-secondary">IBM (coursera)</span>
 						</div>
 						<p class="lead">
-							Durante los últimos 2 años me he dedicado a formarme como diseñador y desarrollador web frontend de forma presencial:
-						</p>
-						<ul>
-							<li>Curso de Astro v-5 con proyecto final <small>(3 meses)</small></li>
-							<li>Curso de React v-18 con proyecto final <small>(3 meses)</small></li>
-							<li>Curso de Angular v-18 con proyecto final <small>(3 meses)</small></li>
-						</ul>
-						<p class="mb-3">
-								Cursos avanzados de programación frontend de <strong>180 horas lectivas</strong> y <strong>120 horas prácticas</strong> con la realización y entrega de <strong>proyecto final</strong> en cada curso.
+							El certificado profesional lo forman <strong>12 cursos</strong> de unas <strong>480 horas</strong> en total inlcuyendo prácticas y la entrega final de una aplicación web "<strong>JavaScript FullStack Capstone Project</strong>" con la implementación y evaluación de todas las habilidades adquiridas.
 						</p>
 						<p class="mb-3">
-							Actualmente sigo ampliando mi experiencia con estas tecnologías en sus últimas versiones para anfianzar mi futuro profesional, 
-							pues soy muy cosciente de la rápida evolución del mercado tecnológico y quiero destacar en el <strong>desarrollo web frontend</strong> dominando frameworks y tendencias que me permitan afrontar desafíos que me apasionen.
+							<span class="badge bg-dark">UI/UX</span>
+							<span class="badge bg-primary">Vanilla-JS</span>
+							<span class="badge bg-primary">HTML-5</span>
+							<span class="badge bg-primary">CSS-3</span>
+							<span class="badge bg-dark">Frontend</span>
+							<span class="badge bg-primary">​React</span>
+							<span class="badge bg-primary">JavaScript</span>
+							<span class="badge bg-primary">TypeScript</span>
+							<span class="badge bg-dark">Backend</span>
+							<span class="badge bg-primary">Node</span>
+							<span class="badge bg-primary">Express</span>
+							<span class="badge bg-primary">RestFul API</span>
+							<span class="badge bg-dark">Bases de datos</span>
+							<span class="badge bg-primary">MySQL</span>
+							<span class="badge bg-primary">MongoDB</span>
+							<span class="badge bg-dark">Apps Cloud</span>
+							<span class="badge bg-primary">Teckton</span>
+							<span class="badge bg-primary">Docker</span>
+							<span class="badge bg-primary">Kubernetes</span>
+							<span class="badge bg-dark">DevOps</span>
+							<span class="badge bg-primary">CI/CD</span>
+							<span class="badge bg-primary">Git Actions</span>
+							<span class="badge bg-primary">SDLC Agile</span>
+						</p>
+					</article>
+					<article id="react" class="article shadow rounded p-3 mb-3">
+						<div class="d-flex justify-content-between mb-2">
+							<h1 class="h2 text-black">
+								Curso Avanzado de React v-18
+							</h1>
+							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="link d-block d-md-none link" href="#history" title="navegar al índice"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+						</div>
+						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
+							<span class="display text-primary">Curso Privado</span>
+							<strong class="badge bg-light text-dark ms-2 me-auto">3 meses</strong>
+							<span class="title text-secondary">BEWSAM INVERSA SL</span>
+						</div>
+						<p class="lead">
+							Desarrollo Web con <strong>React</strong> nivel SENIOR con 180 horas lectivas, 120 horas prácticas y proyecto final.
+						</p>
+						<p class="mb-3">
+							<span class="badge bg-primary">React + Vite (TS)</span>
+							<span class="badge bg-dark">Firebase</span>
+							<span class="badge bg-dark">Node/Express</span>
+							<span class="badge bg-black">Bootstrap/Sass</span>
+						</p>
+					</article>
+					<article id="angular" class="article shadow rounded p-3 mb-3">
+						<div class="d-flex justify-content-between mb-2">
+							<h1 class="h2 text-black">
+								Curso Avanzado de Angular
+							</h1>
+							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="link d-block d-md-none link" href="#history" title="navegar al índice"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+						</div>
+						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
+							<span class="display text-primary">Curso Privado</span>
+							<strong class="badge bg-light text-dark ms-2 me-auto">3 meses</strong>
+							<span class="title text-secondary">BEWSAM INVERSA SL</span>
+						</div>
+						<p class="lead">
+							Desarrollo Web con <strong>Angular</strong> nivel SENIOR con 180 horas lectivas, 120 horas prácticas y proyecto final.
+						</p>
+						<p class="mb-3">
+							<span class="badge bg-primary">Angular + Vite (TS)</span>
+							<span class="badge bg-dark">Firebase</span>
+							<span class="badge bg-dark">Middleware</span>
+							<span class="badge bg-black">Bootstrap/Sass</span>
+						</p>
+					</article>
+					<article id="astro" class="article shadow rounded p-3 mb-3">
+						<div class="d-flex justify-content-between mb-2">
+							<h1 class="h2 text-black">
+								Curso Completo de Astro
+							</h1>
+							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="link d-block d-md-none link" href="#history" title="navegar al índice"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+						</div>
+						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
+							<span class="display text-primary">Curso Privado</span>
+							<strong class="badge bg-light text-dark ms-2 me-auto">3 meses</strong>
+							<span class="title text-secondary">BEWSAM INVERSA SL</span>
+						</div>
+						<p class="lead">
+							Desarrollo Web <strong>fullstack</strong> con 180 horas lectivas, 120 horas prácticas y proyecto.
+						</p>
+						<p class="mb-3">
+							<span class="badge bg-primary">Astro JS/TS</span>
+							<span class="badge bg-black">Slots</span>
+							<span class="badge bg-dark">SSR</span>
+							<span class="badge bg-dark">API</span>
+							<span class="badge bg-black">Taildwind</span>
 						</p>
 					</article>
 					<article id="profesor" class="article shadow rounded p-3 mb-3">
 						<div class="d-flex justify-content-between mb-2">
 							<h1 class="h2 text-black">
-								Cursos de Profesorado
+								Formador de Formadores y Formador Presencial
 							</h1>
 							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
 							<a class="link d-block d-md-none link" href="#history" title="navegar al índice"><span class="bi bi-arrow-up-circle fs-3"></span></a>
 						</div>
 						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
-								<span class="badge bg-primary">Cursos Privados</span>
-								<span class="title text-secondary">IFES - SEPE</span>
+							<span class="display text-primary">Curso Homologado</span>
+							<span class="title text-secondary">SEPE - IFES</span>
 						</div>
-						<ul>
-							<li>Formador de Formadores - 60 horas</li>
-							<li>Formador Presencial - 10 horas</li>
-						</ul>
-						<p class="mb-3">
-							Cursos realizados para desempeñarme como Profesor y tutor de certiﬁcado de profesionalidad en “Curso de confección y publicación de páginas web” -- IFCD0110 .
-						</p>
-						<p class="mb-3">
-							Además he ejercido como formador exporádicamente en otras empresas en las que he trabajado para asesorar a equipos del cliente sobre las soluciones y tecnologías aplicadas en sus proyectos, estoy muy acostumbrado a documentar y enseñar mi trabajo.
+						<p class="lead">
+							Ambos cursos intensivos, adquiridos para ejercer de <strong>profesor presencial</strong> en "Curso de confección y publicación de páginas web" (certificado de profesionalidad) - SEPE.
 						</p>
 					</article>
 					<article id="ingeniero" class="article shadow rounded p-3 mb-3">
@@ -188,15 +283,27 @@ export const snap = '/misc/lautaro-andreani-UYsBCu9RP3Y.jpg';
 							<a class="link d-block d-md-none link" href="#history" title="navegar al índice"><span class="bi bi-arrow-up-circle fs-3"></span></a>
 						</div>
 						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
-								<span class="badge bg-primary">Diplomatura</span>
-								<span class="title text-secondary">Universidad de Valladolid</span>
+							<span class="display text-primary">Ingeniero Técnico</span>
+							<span class="title text-secondary">Universidad de Valladolid</span>
 						</div>
 						<p class="lead">
-							Cursé Ingeniería Técnica en Informática de Gestión en la Universidad de Valladolid, Campus de Segovia.
+							Cursé hasta el último año de carrera sin terminar el proyecto final por emprender mi propio negocio: masweb.es⁠ en Segovia.
 						</p>
-						<p class="mb-3">
-							Estudié en la Universidad de Valladolid, Campus de Segovia, 
-							proyecto sin terminar por emprender mi propio negocio masweb.es (2009-2024), poseo certificado de notas.
+					</article>
+					<article id="programador" class="article shadow rounded p-3 mb-3">
+						<div class="d-flex justify-content-between mb-2">
+							<h1 class="h2 text-black">
+								Oposición Programador Informático
+							</h1>
+							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+							<a class="link d-block d-md-none link" href="#history" title="navegar al índice"><span class="bi bi-arrow-up-circle fs-3"></span></a>
+						</div>
+						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
+							<span class="display text-primary">Técnico Operador-Programador</span>
+							<span class="title text-secondary">OPO - Ayuntamiento de Segovia</span>
+						</div>
+						<p class="lead">
+							Certificado del Ayuntamiento de Segovia de superar todas las pruebas de la oposición <strong>operador-programador</strong> con la 1ª nota más alta de los aspirantes.
 						</p>
 					</article>
 					<article id="tecnico" class="article shadow rounded p-3 mb-3">
@@ -208,62 +315,11 @@ export const snap = '/misc/lautaro-andreani-UYsBCu9RP3Y.jpg';
 							<a class="link d-block d-md-none link" href="#history" title="navegar al índice"><span class="bi bi-arrow-up-circle fs-3"></span></a>
 						</div>
 						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
-								<span class="badge bg-primary">Técnico Superior</span>
-								<span class="title text-secondary">IES María Moliner</span>
+							<span class="display text-primary">Ciclo Formativo de Grado Superior</span>
+							<span class="title text-secondary">FP2 - IES María Moliner</span>
 						</div>
 						<p class="lead">
-							<strong>Técnico en Desarrollo de Aplicaciones Informáticas</strong>, ciclo formativo de grado superior y prácticas como analista y programdor de bases de datos en la <strong>Diputación Provincial de Segovia</strong>.
-						</p>
-						<p class="mb-3">
-							Realicé las prácticas del <strong>ciclo formativo de grado superior</strong> en la <strong>Diputación de Segovia</strong> como analista y programador de aplicaciones de su intranet.
-						</p>
-					</article>
-					<article id="programador" class="article shadow rounded p-3 mb-3">
-						<div class="d-flex justify-content-between mb-2">
-							<h1 class="h2 text-black">
-								Programador de Aplicaciones de Redes Internet/Intranet
-							</h1>
-							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
-							<a class="link d-block d-md-none link" href="#history" title="navegar al índice"><span class="bi bi-arrow-up-circle fs-3"></span></a>
-						</div>
-						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
-								<span class="badge bg-primary">Curso UE</span>
-								<span class="title text-secondary">Academia CEASE</span>
-						</div>
-						<p>
-							Programador de Aplicaciones de Redes Internet/Intranet: curso homologado de 350 horas para gestión de redes y programación en Java++ acreditado por la Unión Europea.
-						</p>
-					</article>
-					<article id="comunicacion" class="article shadow rounded p-3 mb-3">
-						<div class="d-flex justify-content-between mb-2">
-							<h1 class="h2 text-black">
-								Comunicación de Ordenadores y Redes Locales
-							</h1>
-							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
-							<a class="link d-block d-md-none link" href="#history" title="navegar al índice"><span class="bi bi-arrow-up-circle fs-3"></span></a>
-						</div>
-						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
-								<span class="badge bg-primary">Curso Junta CyL</span>
-								<span class="title text-secondary">Academia CEASE</span>
-						</div>
-						<p>
-							Comunicación de Ordenadores y Redes Locales: curso homologado de 350 horas para gestión de sistemas y arquitecturas de red - Junta de Castilla y León.
-						</p>
-					</article>
-					<article id="bachiller" class="article shadow rounded p-3 mb-3">
-						<div class="d-flex justify-content-between mb-2">
-							<h1 class="h2 text-black">
-								Bachillerato Tecnológico
-							</h1>
-							<a class="d-none d-md-block link" href="#content"><span class="bi bi-arrow-up-circle fs-3"></span></a>
-							<a class="link d-block d-md-none link" href="#history" title="navegar al índice"><span class="bi bi-arrow-up-circle fs-3"></span></a>
-						</div>
-						<div class="d-flex align-items-baseline justify-content-between mt-n1 mb-2">
-								<span class="badge bg-primary">Titulación</span>
-								<span class="title text-secondary">IES Ezequiel González</span>
-						</div>
-						<p>
-							Realicé mi Bachillerato de Tecnología según LOGSE con optativa de Informática en Segovia.
+							Ciclo Formativo Grado Superior con prácticas de <strong>analista-programador</strong> en la <u>Diputación de Segovia</u>.
 						</p>
 					</article>
 				</section>
