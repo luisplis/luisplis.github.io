@@ -2,10 +2,10 @@
 const conf = {
     site: 'https://luisplis.github.io',
     base: '',
-    name:     'CV FRONTEND',
-    term:     'Experto Desarrollador Web',
+    name:     'Desarrollador Web',
+    term:     'Experto en Aplicaciones Web',
     desc:     'Desarrollo de proyectos web optimizados en rendimiento para mejorar el rendimiento y la calidad en posicionamiento',
-    text:     'Se ofrece desarrollador web frontend, preferible en Astro y React, con experiencia de gestor, analista, diseñador y programador en proyectos y aplicaciones realizadas desde el backend.',
+    text:     'Se ofrece desarrollador web frontend y backend, preferible en remoto, con experiencia en empresas y todo el ciclo de vida de las aplicaciones web como producto.',
     color:    '#3377FF',
     snap:     '/favicon.svg',
     image:    '/favicon.svg',
